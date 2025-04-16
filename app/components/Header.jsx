@@ -82,7 +82,7 @@ export function Header() {
           {/* Logo 5 */}
           <Link to="https://www.linkedin.com/company/bracolpro/?originalSubdomain=br" className="logo-link">
             <img
-              src="app/public/images/header_logos/linkedin_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/SILVENTProOne_b93f0ca0-c576-4c3d-9908-518e6af72e0f_800x800.png?v=1711991339"
               alt="Logo 5"
               className="header-img"
             />
