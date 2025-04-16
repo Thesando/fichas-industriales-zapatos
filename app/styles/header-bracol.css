@@ -1,0 +1,466 @@
+.header-bracol {
+  position: sticky;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  /* Blanco con 95% de opacidad */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  top: 0;
+  z-index: 1;
+}
+
+/* Primera fila */
+.header-top-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background: #5C5C5C;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-images {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-img {
+  height: 35px;
+  width: auto;
+}
+
+/* Segunda fila */
+.header-bottom-row {
+  display: flex;
+  align-items: center;
+  padding: 25px 20px;
+  gap: 30px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+/* Menú principal */
+.main-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.menu-item {
+  display: inline-flex;
+  font-weight: 600;
+  font-size: 16px;
+  align-items: center;
+  gap: 4px;
+  /* Espacio entre texto e icono */
+  padding: 8px 0;
+  /* Espaciado vertical */
+}
+
+.menu-item svg {
+  width: 20px;
+  height: 20px;
+  align-items: center;
+}
+
+.menu-item:hover {
+  color: #EA0029;
+}
+
+.menu-item:hover svg {
+  fill: #EA0029;
+}
+
+/*Contenedor principal del item del menu */
+.menu-item-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/*Popover*/
+.popover-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 300%;
+  background: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+/*Mostrar popover al hacer hover*/
+.menu-item-wrapper:hover .popover-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popover-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.popover-menu h2 {
+  color: #EA0029;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+/*Items del popover*/
+.popover-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.popover-item:hover {
+  color: #EA0029;
+}
+
+.popover-item>div {
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente */
+  justify-content: space-between;
+  /* Separa texto e icono */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+}
+
+/* Texto del ítem */
+.popover-item span {
+  margin-right: 10px;
+  /* Espacio entre texto e icono */
+}
+
+/* Submenú desplegado */
+.has-submenu {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popover-item svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  /* fuerza que se vaya al extremo derecho */
+}
+
+.submenu {
+  margin-top: 5px;
+  margin-left: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.submenu-item {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.submenu-item:hover {
+  color: #EA0029;
+}
+
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  /* Se ajusta al contenido */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  /* Para que no haya desbordamiento */
+}
+
+.search-input {
+  width: 500px;
+  padding: 10px;
+  border: none;
+  /* Quitamos el borde porque lo maneja .search-bar */
+  font-size: 1rem;
+  outline: none;
+  background: none;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 55px;
+  /* Misma altura que el input */
+  background: #f8f8f8;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background: #e8e8e8;
+}
+
+.separator {
+  color: white;
+  font-size: 40px;
+  margin: 0 5px;
+}
+
+.header-bottom-row-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header-top-row {
+    justify-content: center;
+    /* Centrar contenido en móvil */
+    padding: 8px 10px;
+  }
+
+  /* Ocultar logos 1-3 y separador */
+  .header-images a:nth-child(-n+3),
+  .header-images .separator {
+    display: none;
+  }
+
+  /* Ajustar tamaño de logos en móvil */
+  .header-img {
+    height: 30px;
+  }
+
+  .header-bottom-row {
+    display: none;
+  }
+
+  .header-bottom-row-mobile {
+    display: block;
+    padding: 10px;
+  }
+
+  .header-bottom-row-mobile>div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .mobile-menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #333;
+    /* Color del ícono de hamburguesa */
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 30px;
+    /* Ajusta según el tamaño de tu logo */
+    width: auto;
+  }
+
+  .search-bar {
+    width: 100%;
+    display: flex;
+  }
+
+  .search-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: none;
+    /* Quitamos el borde porque lo maneja .search-bar */
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+  }
+
+  .search-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lupa-icon {
+    fill: #333;
+    /* Color del ícono de lupa */
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .mobile-menu-container {
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+  }
+
+  .close-menu-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .close-menu-button:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* Estilos generales del menú móvil */
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .mobile-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-menu-item:hover {
+    background-color: #f5f5f5;
+  }
+
+  .mobile-menu-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu-arrow.open {
+    transform: rotate(180deg);
+  }
+
+  /* Submenú desplegable */
+  .mobile-submenu {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .mobile-submenu-item {
+    padding: 10px 16px;
+    font-size: 16px;
+    color: #555;
+    text-decoration: none;
+    border-left: 2px solid #eee;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-submenu-item:hover {
+    color: #EA0029;
+    border-left-color: #EA0029;
+    background-color: #f9f9f9;
+  }
+
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Ajustes para el overlay */
+  .mobile-menu-container {
+    padding-bottom: 20px;
+    overflow-y: auto;
+    /* Permite scroll si el menú es muy largo */
+  }
+}
