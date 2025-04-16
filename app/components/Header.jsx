@@ -74,7 +74,7 @@ export function Header() {
           <Link to="https://www.instagram.com/bracol.pro/" className="logo-link">
             <img
               src="/images/header_logos/instagram_logo.png"
-              alt="Logo 4"
+              alt="Logo X"
               className="header-img"
             />
           </Link>
