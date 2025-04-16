@@ -73,7 +73,7 @@ export function Header() {
           {/* Logo 4 */}
           <Link to="https://www.instagram.com/bracol.pro/" className="logo-link">
             <img
-              src="app/public/images/header_logos/instagram_logo.png"
+              src="/images/header_logos/instagram_logo.png"
               alt="Logo 4"
               className="header-img"
             />
