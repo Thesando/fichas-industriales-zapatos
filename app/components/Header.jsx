@@ -43,7 +43,7 @@ export function Header() {
           {/* Logo 1 */}
           <Link to="https://www.steelflex.pro/es/casa/" className="logo-link desktop-only">
             <img
-              src="app/public/images/header_logos/steelflex_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/steelflex_logo_800x800.png?v=1744929195"
               alt="Logo 1"
               className="header-img"
             />
@@ -52,7 +52,7 @@ export function Header() {
           {/* Logo 2 */}
           <Link to="https://www.fujiwara.pro" className="logo-link desktop-only">
             <img
-              src="app/public/images/header_logos/Fujiwara_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/Fujiwara_logo_800x800.png?v=1744929195"
               alt="Logo 2"
               className="header-img"
             />
@@ -61,7 +61,7 @@ export function Header() {
           {/* Logo 3 */}
           <Link to="https://worksafe.com.py/en/home/" className="logo-link desktop-only">
             <img
-              src="app/public/images/header_logos/Worksafe_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/Worksafe_logo_800x800.png?v=1744929195"
               alt="Logo 3"
               className="header-img"
             />
@@ -73,7 +73,7 @@ export function Header() {
           {/* Logo 4 */}
           <Link to="https://www.instagram.com/bracol.pro/" className="logo-link">
             <img
-              src="/images/header_logos/instagram_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/instagram_logo_800x800.png?v=1744929195"
               alt="Logo X"
               className="header-img"
             />
@@ -82,7 +82,7 @@ export function Header() {
           {/* Logo 5 */}
           <Link to="https://www.linkedin.com/company/bracolpro/?originalSubdomain=br" className="logo-link">
             <img
-              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/SILVENTProOne_b93f0ca0-c576-4c3d-9908-518e6af72e0f_800x800.png?v=1711991339"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/linkedin_logo_800x800.png?v=1744929195"
               alt="Logo 5"
               className="header-img"
             />
@@ -91,7 +91,7 @@ export function Header() {
           {/* Logo 6 */}
           <Link to="https://www.linkedin.com/company/bracolpro/?originalSubdomain=br" className="logo-link">
             <img
-              src="app/public/images/header_logos/youtube_logo_blanco.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/youtube_logo_blanco_800x800.png?v=1744929195"
               alt="Logo 6"
               className="header-img"
             />
@@ -100,7 +100,7 @@ export function Header() {
           {/* Logo 7 */}
           <Link to="https://www.facebook.com/bracol.pro" className="logo-link">
             <img
-              src="app/public/images/header_logos/facebook_logo.png"
+              src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/facebook_logo_800x800.png?v=1744929195"
               alt="Logo 7"
               className="header-img"
             />
@@ -113,7 +113,7 @@ export function Header() {
         {/* Logo */}
         <NavLink to="/" className="logo-link">
           <img
-            src="app/public/images/bracol_logo.png" // URL de tu logo
+            src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/bracol_logo_800x800.png?v=1744929177" // URL de tu logo
             alt="Bracol"
             className="logo"
           />
