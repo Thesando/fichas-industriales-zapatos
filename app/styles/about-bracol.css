@@ -1,0 +1,187 @@
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomOut 20s ease-out forwards;
+}
+
+.section-title-about-bracol {
+    font-size: 72px;
+}
+
+.text-content h2.slogan {
+    color: #EA0029;
+    font-size: 40px;
+}
+
+.description {
+    text-align: left;
+    color: #666;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.img-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: inset(0 2px);
+}
+
+.video-title {
+    text-align: center;
+    font-size: 56px;
+    margin: 20px 0;
+}
+
+.video-container {
+    padding: 0;
+}
+
+.mission-title {
+    font-size: 40px;
+    font-family: 'Rajdhani', sans-serif;
+    margin-bottom: 0;
+}
+
+.mission-text {
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    color: #909090;
+}
+
+.valores-title {
+    color: #C22036;
+    font-size: 28px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700 !important;
+}
+
+.valores-text {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #909090;
+}
+
+.our-business {
+    font-size: 72px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700 !important;
+}
+
+.business-text {
+    color: #909090;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500 !important;
+}
+
+.business-result {
+    color: #C22036;
+    font-size: 72px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700 !important;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }  
+
+.newsletter {
+    color: #EA0029;
+    font-size: 24px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700 !important;
+}
+
+.newsletter2 {
+    font-size: 54px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700 !important;
+}
+
+.newsletter-input {
+    width: 550px;
+    max-width: 100% !important;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 4px 0 0 4px;
+    background-color: #E9E9E9;
+}
+
+.newsletter-input:hover,
+.newsletter-input:focus,
+.newsletter-input:active,
+.newsletter-input.active {
+    background-color: #E9E9E9;
+}
+
+.newsletter-btn {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    padding: 10px 25px;
+    white-space: nowrap;
+    background-color: #EA0029 !important;
+    /* Fondo rojo */
+    border-color: #EA0029 !important;
+    /* Borde rojo */
+    color: white !important;
+    /* Texto blanco */
+}
+
+/* Elimina el azul en TODOS los estados interactivos */
+.newsletter-btn:hover,
+.newsletter-btn:focus,
+.newsletter-btn:active,
+.newsletter-btn.active {
+    background-color: #EA0029 !important;
+    border-color: #EA0029 !important;
+    box-shadow: none !important;
+    /* Opcional: Elimina el glow azul al hacer focus */
+}
+
+/* Animación lenta de zoom out */
+@keyframes zoomOut {
+    0% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        margin-bottom: 20px;
+        /* Espacio entre videos */
+    }
+
+    .our-business {
+        font-size: 40px;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 700 !important;
+    }
+
+    .newsletter-input {
+        border-radius: 4px !important;
+        /* Bordes redondeados completos en móvil */
+        margin-bottom: 10px;
+    }
+
+    .newsletter-btn {
+        border-radius: 4px !important;
+        /* Bordes redondeados completos en móvil */
+        width: 100%;
+    }
+}

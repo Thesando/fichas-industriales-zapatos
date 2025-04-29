@@ -49,6 +49,10 @@
 }
 
 /* Menú principal */
+.main-menu .nav-link {
+  all: unset; /* Elimina todos los estilos heredados */
+}
+
 .main-menu {
   display: flex;
   align-items: center;
@@ -61,10 +65,10 @@
   font-weight: 600;
   font-size: 16px;
   align-items: center;
-  gap: 4px;
-  /* Espacio entre texto e icono */
-  padding: 8px 0;
-  /* Espaciado vertical */
+  gap: 4px; /* Espacio entre texto e icono */
+  padding: 8px 0; /* Espaciado vertical */
+  color: #000; /* Fuerza color negro */
+  text-decoration: none !important; /* Elimina subrayado */
 }
 
 .menu-item svg {
@@ -129,11 +133,12 @@
 .popover-item {
   display: flex;
   align-items: center;
-  padding: 6px 8px;
+  padding: 4px 6px;
   cursor: pointer;
   color: #333;
   font-size: 14px;
   border-radius: 3px;
+  text-decoration: none !important; /* Elimina subrayado */
 }
 
 .popover-item:hover {
