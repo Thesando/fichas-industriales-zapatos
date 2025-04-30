@@ -84,9 +84,6 @@ export default function Product() {
   /** @type {LoaderReturnData} */
   const { product } = useLoaderData();
 
-  const [mainImage, setMainImage] = useState(product.media.nodes[0].image.url);
-
-
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
     product.selectedOrFirstAvailableVariant,
@@ -107,48 +104,8 @@ export default function Product() {
 
   return (
     //Anteriromente este classname se llamaba product ... consideralo si tienes que regresar
-    <div className="container-fluid">
-      <div className='row gx-5'>
-        {/*Columna izquierda - Galeria 50% */}
-        <div className='col-md-6'>
-          <div className='d-flex justify-content-center mb-4'>
-            <img
-              src={selectedVariant?.image?.url || product.media.nodes[0].image.url}
-              alt={product.title}
-              className="img-fluid rounded"
-              style={{
-                width: '495px',
-                height: '495px',
-                objectFit: 'cover'
-              }}
-            />
-          </div>
-          <div className='row row-cols-7 g-2 justify-content-center'>
-            {product.media.nodes.slice(0, 7).map((media) => (
-              <div className='col' key={media.id}>
-                <button
-                  className='p-0 border-0 bg-transparent'
-                  onClick={() => setMainImage(media.image.url)}
-                  >
-                    <img src={media.image.url}
-                     alt={`Miniatura ${media.image.altText || ''}`}
-                     className='img-fluid rounded border' 
-                     style={{
-                      width: '49px',
-                      height: '49px',
-                      objectFit: 'cover',
-                      borderColor: mainImage === media.image.url ? '#EA0029': '#dee2e6'
-                     }}
-                     />
-                  </button>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/*Columna derecha - Detalles 50% */}
-        <div className='col-md-6'></div>
-      </div>
-      {/* <ProductImage image={selectedVariant?.image} />
+    <div className="product">
+      <ProductImage image={selectedVariant?.image} />
       <div className="product-main">
         <h1>{title}</h1>
         <ProductPrice
@@ -184,7 +141,7 @@ export default function Product() {
           ],
         }}
       />
-      */}
+      *
     </div>
   );
 }
@@ -268,20 +225,17 @@ const PRODUCT_FRAGMENT = `#graphql
 `;
 
 const PRODUCT_QUERY = `#graphql
-  query Product($handle: String!) {
+  query Product(
+    $country: CountryCode
+    $handle: String!
+    $language: LanguageCode
+    $selectedOptions: [SelectedOptionInput!]!
+  ) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
-      media(first: 8) { // 1 principal + 7 miniaturas
-        nodes {
-          ... on MediaImage {
-            image {
-              url(transform: {maxWidth: 800, maxHeight: 800})
-              altText
-            }
-          }
-        }
-      }
+      ...Product
     }
   }
+  ${PRODUCT_FRAGMENT}
 `;
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
