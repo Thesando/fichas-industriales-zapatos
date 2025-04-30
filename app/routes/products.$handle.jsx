@@ -1,4 +1,4 @@
-import {useLoaderData} from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import {
   getSelectedProductOptions,
   Analytics,
@@ -7,16 +7,17 @@ import {
   getAdjacentAndFirstAvailableVariants,
   useSelectedOptionInUrlParam,
 } from '@shopify/hydrogen';
-import {ProductPrice} from '~/components/ProductPrice';
-import {ProductImage} from '~/components/ProductImage';
-import {ProductForm} from '~/components/ProductForm';
+import { ProductPrice } from '~/components/ProductPrice';
+import { ProductImage } from '~/components/ProductImage';
+import { ProductForm } from '~/components/ProductForm';
+import { useState } from 'react';
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({data}) => {
+export const meta = ({ data }) => {
   return [
-    {title: `Hydrogen | ${data?.product.title ?? ''}`},
+    { title: `Bracol | ${data?.product.title ?? ''}` },
     {
       rel: 'canonical',
       href: `/products/${data?.product.handle}`,
@@ -34,7 +35,7 @@ export async function loader(args) {
   // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
 
-  return {...deferredData, ...criticalData};
+  return { ...deferredData, ...criticalData };
 }
 
 /**
@@ -42,23 +43,23 @@ export async function loader(args) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  * @param {LoaderFunctionArgs}
  */
-async function loadCriticalData({context, params, request}) {
-  const {handle} = params;
-  const {storefront} = context;
+async function loadCriticalData({ context, params, request }) {
+  const { handle } = params;
+  const { storefront } = context;
 
   if (!handle) {
     throw new Error('Expected product handle to be defined');
   }
 
-  const [{product}] = await Promise.all([
+  const [{ product }] = await Promise.all([
     storefront.query(PRODUCT_QUERY, {
-      variables: {handle, selectedOptions: getSelectedProductOptions(request)},
+      variables: { handle, selectedOptions: getSelectedProductOptions(request) },
     }),
     // Add other queries here, so that they are loaded in parallel
   ]);
 
   if (!product?.id) {
-    throw new Response(null, {status: 404});
+    throw new Response(null, { status: 404 });
   }
 
   return {
@@ -72,7 +73,7 @@ async function loadCriticalData({context, params, request}) {
  * Make sure to not throw any errors here, as it will cause the page to 500.
  * @param {LoaderFunctionArgs}
  */
-function loadDeferredData({context, params}) {
+function loadDeferredData({ context, params }) {
   // Put any API calls that is not critical to be available on first page render
   // For example: product reviews, product recommendations, social feeds.
 
@@ -81,7 +82,10 @@ function loadDeferredData({context, params}) {
 
 export default function Product() {
   /** @type {LoaderReturnData} */
-  const {product} = useLoaderData();
+  const { product } = useLoaderData();
+
+  const [mainImage, setMainImage] = useState(product.media.nodes[0].image.url);
+
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -99,11 +103,52 @@ export default function Product() {
     selectedOrFirstAvailableVariant: selectedVariant,
   });
 
-  const {title, descriptionHtml} = product;
+  const { title, descriptionHtml } = product;
 
   return (
-    <div className="product">
-      <ProductImage image={selectedVariant?.image} />
+    //Anteriromente este classname se llamaba product ... consideralo si tienes que regresar
+    <div className="container-fluid">
+      <div className='row gx-5'>
+        {/*Columna izquierda - Galeria 50% */}
+        <div className='col-md-6'>
+          <div className='d-flex justify-content-center mb-4'>
+            <img
+              src={selectedVariant?.image?.url || product.media.nodes[0].image.url}
+              alt={product.title}
+              className="img-fluid rounded"
+              style={{
+                width: '495px',
+                height: '495px',
+                objectFit: 'cover'
+              }}
+            />
+          </div>
+          <div className='row row-cols-7 g-2 justify-content-center'>
+            {product.media.nodes.slice(0, 7).map((media) => (
+              <div className='col' key={media.id}>
+                <button
+                  className='p-0 border-0 bg-transparent'
+                  onClick={() => setMainImage(media.image.url)}
+                  >
+                    <img src={media.image.url}
+                     alt={`Miniatura ${media.image.altText || ''}`}
+                     className='img-fluid rounded border' 
+                     style={{
+                      width: '49px',
+                      height: '49px',
+                      objectFit: 'cover',
+                      borderColor: mainImage === media.image.url ? '#EA0029': '#dee2e6'
+                     }}
+                     />
+                  </button>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/*Columna derecha - Detalles 50% */}
+        <div className='col-md-6'></div>
+      </div>
+      {/* <ProductImage image={selectedVariant?.image} />
       <div className="product-main">
         <h1>{title}</h1>
         <ProductPrice
@@ -139,6 +184,7 @@ export default function Product() {
           ],
         }}
       />
+      */}
     </div>
   );
 }
@@ -222,17 +268,20 @@ const PRODUCT_FRAGMENT = `#graphql
 `;
 
 const PRODUCT_QUERY = `#graphql
-  query Product(
-    $country: CountryCode
-    $handle: String!
-    $language: LanguageCode
-    $selectedOptions: [SelectedOptionInput!]!
-  ) @inContext(country: $country, language: $language) {
+  query Product($handle: String!) {
     product(handle: $handle) {
-      ...Product
+      media(first: 8) { // 1 principal + 7 miniaturas
+        nodes {
+          ... on MediaImage {
+            image {
+              url(transform: {maxWidth: 800, maxHeight: 800})
+              altText
+            }
+          }
+        }
+      }
     }
   }
-  ${PRODUCT_FRAGMENT}
 `;
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
