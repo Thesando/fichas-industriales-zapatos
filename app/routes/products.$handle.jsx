@@ -122,7 +122,7 @@ export default function Product() {
               key={image.id}
               src={image.url}
               alt={`Miniatura ${image.altText || ''}`}
-              className='secondary-image-products'
+              className= {`secondary-image-products`}
               onClick={() => setSelectedImage(image)}
               aria-hidden="true"
             />
@@ -131,8 +131,9 @@ export default function Product() {
       </div>
 
       {/* Columna de detalles (derecha) */}
-      <div>
+      <div className='detail-of-product'>
         <h1>{title}</h1>
+        <div className="product-description" dangerouslySetInnerHTML={{__html: descriptionHtml}} />
       </div>
     </div>
   );
