@@ -85,6 +85,20 @@ export default function Product() {
   const { product } = useLoaderData();
   const [selectedImage, setSelectedImage] = useState(product?.images?.nodes?.[0] || null);
 
+  // Protege contra undefined/null
+  const metafields = product?.metafields ?? [];
+
+  // Buscar el valor del número reducido
+  const reducedNumber = metafields.find(
+    (mf) => mf?.namespace === 'custom' && mf?.key === 'numero_reducido'
+  )?.value;
+
+  // Buscar el valor del número de referencia
+  const referenceNumber = metafields.find(
+    (mf) => mf?.namespace === 'custom' && mf?.key === 'referencia'
+  )?.value;
+
+
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
     product.selectedOrFirstAvailableVariant,
@@ -122,7 +136,7 @@ export default function Product() {
               key={image.id}
               src={image.url}
               alt={`Miniatura ${image.altText || ''}`}
-              className= {`secondary-image-products`}
+              className={`secondary-image-products`}
               onClick={() => setSelectedImage(image)}
               aria-hidden="true"
             />
@@ -133,7 +147,15 @@ export default function Product() {
       {/* Columna de detalles (derecha) */}
       <div className='detail-of-product'>
         <h1>{title}</h1>
-        <div className="product-description" dangerouslySetInnerHTML={{__html: descriptionHtml}} />
+        <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+        {reducedNumber && (
+          <p><strong>Número reducido:</strong> {reducedNumber}</p>
+        )}
+
+        {referenceNumber && (
+          <p><strong>Número de referencia:</strong> {referenceNumber}</p>
+        )}
+
       </div>
     </div>
   );
@@ -184,6 +206,14 @@ const PRODUCT_FRAGMENT = `#graphql
     handle
     descriptionHtml
     description
+     metafields(identifiers: [
+    {namespace: "custom", key: "numero_reducido"},
+    {namespace: "custom", key: "referencia"}
+  ]) {
+    namespace
+    key
+    value
+  }
     images(first: 10) {
     nodes {
       id
