@@ -83,6 +83,7 @@ function loadDeferredData({ context, params }) {
 export default function Product() {
   /** @type {LoaderReturnData} */
   const { product } = useLoaderData();
+  const [selectedImage, setSelectedImage] = useState(product?.images?.nodes?.[0] || null);
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -104,44 +105,35 @@ export default function Product() {
 
   return (
     //Anteriromente este classname se llamaba product ... consideralo si tienes que regresar
-    <div className="product">
-      <ProductImage image={selectedVariant?.image} />
-      <div className="product-main">
-        <h1>{title}</h1>
-        <ProductPrice
-          price={selectedVariant?.price}
-          compareAtPrice={selectedVariant?.compareAtPrice}
+    <div className="product"> {/* Contenedor principal como fila */}
+      {/* Columna de imágenes (izquierda) */}
+      <div>
+        {/* Imagen principal */}
+        <img
+          src={selectedImage.url}
+          alt="Imagen principal"
+          className='main-image-product'
         />
-        <br />
-        <ProductForm
-          productOptions={productOptions}
-          selectedVariant={selectedVariant}
-        />
-        <br />
-        <br />
-        <p>
-          <strong>Description</strong>
-        </p>
-        <br />
-        <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-        <br />
+
+        {/* Contenedor de miniaturas - ¡Cambio clave aquí! */}
+        <div className='secondary-images'>
+          {product.images.nodes.slice(0, 7).map((image) => (
+            <img
+              key={image.id}
+              src={image.url}
+              alt={`Miniatura ${image.altText || ''}`}
+              className='secondary-image-products'
+              onClick={() => setSelectedImage(image)}
+              aria-hidden="true"
+            />
+          ))}
+        </div>
       </div>
-      <Analytics.ProductView
-        data={{
-          products: [
-            {
-              id: product.id,
-              title: product.title,
-              price: selectedVariant?.price.amount || '0',
-              vendor: product.vendor,
-              variantId: selectedVariant?.id || '',
-              variantTitle: selectedVariant?.title || '',
-              quantity: 1,
-            },
-          ],
-        }}
-      />
-      *
+
+      {/* Columna de detalles (derecha) */}
+      <div>
+        <h1>{title}</h1>
+      </div>
     </div>
   );
 }
@@ -191,6 +183,13 @@ const PRODUCT_FRAGMENT = `#graphql
     handle
     descriptionHtml
     description
+    images(first: 10) {
+    nodes {
+      id
+      url
+      altText
+    }
+  }
     encodedVariantExistence
     encodedVariantAvailability
     options {
