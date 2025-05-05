@@ -97,12 +97,12 @@ export default function Product() {
 
   const iconsImageField = (namespace, key) => {
     return product?.metafields?.find(
-      (field) => field.namespace === 'custom' && field.key === 'icons_image'
+      (field) => field.namespace === 'custom' && field.key === 'image_icons'
     )?.value || null;
   };
 
-  const iconsImageUrl = iconsImageField?.reference?.image?.url;
-  const iconsImageAlt = iconsImageField?.reference?.image?.altText || 'Íconos del producto';
+  const iconsImageUrl = iconsImageField?.value || null;
+
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -166,7 +166,7 @@ export default function Product() {
         )}
 
         {iconsImageUrl && (
-          <img src={iconsImageUrl} alt={iconsImageAlt} className="img-fluid my-4" />
+          <img src={iconsImageUrl} alt="Íconos del producto" className="img-fluid my-4" />
         )}
 
         <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
@@ -222,20 +222,13 @@ const PRODUCT_FRAGMENT = `#graphql
     description
      metafields(identifiers: [
     {namespace: "custom", key: "numero_reducido"},
-    {namespace: "custom", key: "referencia"}
+    {namespace: "custom", key: "referencia"},
+    {namespace: "custom", key: "image_icons"}
   ]) {
     namespace
     key
     value
     type
-    reference {
-      ... on MediaImage {
-        image {
-          url
-          altText
-        }
-      }
-    }
   }
     images(first: 10) {
     nodes {
