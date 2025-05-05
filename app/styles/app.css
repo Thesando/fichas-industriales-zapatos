@@ -464,6 +464,8 @@ button.reset:hover:not(:has(> *)) {
   font-size: 20px;
   /* Tamaño base */
   color: #646464;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 /*Custom metafield for shopify products*/
@@ -471,13 +473,14 @@ button.reset:hover:not(:has(> *)) {
   font-family: 'Rajdhani', sans-serif;
   font-size: 32px;
   color: #EA0029;
+  font-weight: 700;
 }
 
-.metafield-reference{
+.metafield-reference {
   font-family: 'Rajdhani', sans-serif;
   font-size: 21px;
   color: #EA0029;
-  margin-bottom: 1rem;  
+  font-weight: 700;
 }
 
 .product-main {
