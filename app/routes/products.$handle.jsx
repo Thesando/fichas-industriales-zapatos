@@ -95,10 +95,14 @@ export default function Product() {
   const reducedNumber = getMetafieldValue('custom', 'numero_reducido');
   const referenceNumber = getMetafieldValue('custom', 'referencia');
 
-  // Obtener la URL de la imagen personalizada
-  const iconosImage = product.metafields.find(
-    mf => mf?.namespace === 'custom' && mf?.key === 'imagen_iconos'
-  )?.reference?.image?.url; // Acceso profundo para URL de imagen
+  const iconsImageField = (namespace, key) => {
+    return product?.metafields?.find(
+      (field) => field.namespace === 'custom' && field.key === 'icons_image'
+    )?.value || null;
+  };
+
+  const iconsImageUrl = iconsImageField?.reference?.image?.url;
+  const iconsImageAlt = iconsImageField?.reference?.image?.altText || 'Íconos del producto';
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -161,13 +165,8 @@ export default function Product() {
           </div>
         )}
 
-        {/* Imagen de iconos (solo si existe el metafield) */}
-        {iconosImage && (
-          <img
-            src={iconosImage}
-            alt="Iconos del producto"
-            className="iconos-image"
-          />
+        {iconsImageUrl && (
+          <img src={iconsImageUrl} alt={iconsImageAlt} className="img-fluid my-4" />
         )}
 
         <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
@@ -223,13 +222,20 @@ const PRODUCT_FRAGMENT = `#graphql
     description
      metafields(identifiers: [
     {namespace: "custom", key: "numero_reducido"},
-    {namespace: "custom", key: "referencia"},
-    {namespace: "custom", key: "imagen_iconos"}
+    {namespace: "custom", key: "referencia"}
   ]) {
     namespace
     key
     value
-    reference
+    type
+    reference {
+      ... on MediaImage {
+        image {
+          url
+          altText
+        }
+      }
+    }
   }
     images(first: 10) {
     nodes {
