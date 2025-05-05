@@ -96,7 +96,7 @@ export default function Product() {
   const referenceNumber = getMetafieldValue('custom', 'referencia');
 
   const iconosImage = product.metafields.find(
-    mf => mf?.key === 'imagen_iconos'
+    mf => mf?.key === 'image_icons'
   )?.reference?.image;
 
   // Optimistically selects a variant with given available variant information
@@ -224,7 +224,7 @@ const PRODUCT_FRAGMENT = `#graphql
      metafields(identifiers: [
     {namespace: "custom", key: "numero_reducido"},
     {namespace: "custom", key: "referencia"},
-    {namespace: "custom", key: "imagen_iconos"}
+    {namespace: "custom", key: "image_icons"}
   ]) {
     namespace
     key
