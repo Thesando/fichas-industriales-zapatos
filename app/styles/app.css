@@ -483,6 +483,11 @@ button.reset:hover:not(:has(> *)) {
   font-weight: 700;
 }
 
+.iconos-image{
+  width: 80%;
+  height: auto;
+}
+
 .product-main {
   align-self: start;
   position: sticky;
