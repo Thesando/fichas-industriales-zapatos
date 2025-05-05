@@ -94,14 +94,7 @@ export default function Product() {
 
   const reducedNumber = getMetafieldValue('custom', 'numero_reducido');
   const referenceNumber = getMetafieldValue('custom', 'referencia');
-
-  const iconsImageField = (namespace, key) => {
-    return product?.metafields?.find(
-      (field) => field.namespace === 'custom' && field.key === 'image_icons'
-    )?.value || null;
-  };
-
-  const iconsImageUrl = iconsImageField?.value || null;
+  const iconsImageUrl = getMetafieldValue('custom', 'image_icons')?.value || null;
 
 
   // Optimistically selects a variant with given available variant information
