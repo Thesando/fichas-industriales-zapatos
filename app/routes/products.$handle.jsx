@@ -85,19 +85,15 @@ export default function Product() {
   const { product } = useLoaderData();
   const [selectedImage, setSelectedImage] = useState(product?.images?.nodes?.[0] || null);
 
-  // Protege contra undefined/null
-  const metafields = product?.metafields ?? [];
+  // Método más seguro para metafields
+  const getMetafieldValue = (namespace, key) => {
+    return product?.metafields?.find(
+      mf => mf?.namespace === namespace && mf?.key === key
+    )?.value || null;
+  };
 
-  // Buscar el valor del número reducido
-  const reducedNumber = metafields.find(
-    (mf) => mf?.namespace === 'custom' && mf?.key === 'numero_reducido'
-  )?.value;
-
-  // Buscar el valor del número de referencia
-  const referenceNumber = metafields.find(
-    (mf) => mf?.namespace === 'custom' && mf?.key === 'referencia'
-  )?.value;
-
+  const reducedNumber = getMetafieldValue('custom', 'numero_reducido');
+  const referenceNumber = getMetafieldValue('custom', 'referencia');
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -147,15 +143,20 @@ export default function Product() {
       {/* Columna de detalles (derecha) */}
       <div className='detail-of-product'>
         <h1>{title}</h1>
-        <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+
         {reducedNumber && (
-          <p><strong>Número reducido:</strong> {reducedNumber}</p>
+          <div className="metafield-row">
+            <span className="metafield-label">Número reducido: {reducedNumber}</span>
+          </div>
         )}
 
         {referenceNumber && (
-          <p><strong>Número de referencia:</strong> {referenceNumber}</p>
+          <div className="metafield-row">
+            <span className="metafield-label">Referencia: {referenceNumber}</span>
+          </div>
         )}
-
+        
+        <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
       </div>
     </div>
   );
