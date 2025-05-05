@@ -420,6 +420,7 @@ button.reset:hover:not(:has(> *)) {
 */
 .product {
   display: grid;
+
   @media (min-width: 45em) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
@@ -430,6 +431,7 @@ button.reset:hover:not(:has(> *)) {
   margin-top: 10px;
   font-size: 36px;
   font-family: 'Rajdhani', 'sans-serif';
+  margin-bottom: 1rem;
 }
 
 .product-image img {
@@ -444,11 +446,11 @@ button.reset:hover:not(:has(> *)) {
   border: solid 2px #e9e9e9;
 }
 
-.secondary-images{
+.secondary-images {
   margin-left: 20px;
 }
 
-.secondary-image-products{
+.secondary-image-products {
   width: 10%;
   height: auto;
   cursor: pointer;
@@ -456,10 +458,26 @@ button.reset:hover:not(:has(> *)) {
   border: solid 2px #e9e9e9;
 }
 
-.product-description p{
-  font-family: 'Rajdhani', sans-serif; /* Cambia la fuente */
-  font-size: 20px; /* Tamaño base */
+.product-description p {
+  font-family: 'Rajdhani', sans-serif;
+  /* Cambia la fuente */
+  font-size: 20px;
+  /* Tamaño base */
   color: #646464;
+}
+
+/*Custom metafield for shopify products*/
+.metafield-reduced-number {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 32px;
+  color: #EA0029;
+}
+
+.metafield-reference{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 21px;
+  color: #EA0029;
+  margin-bottom: 1rem;  
 }
 
 .product-main {
@@ -653,16 +671,16 @@ button.reset:hover:not(:has(> *)) {
     display: flex;
   }
 
-  .main-image-product{
+  .main-image-product {
     border: none;
   }
 
-  .secondary-image-products{
+  .secondary-image-products {
     width: 8%;
     height: auto;
   }
 
-  .detail-of-product{
+  .detail-of-product {
     margin-left: 20px;
   }
 }

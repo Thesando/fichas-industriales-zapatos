@@ -146,13 +146,13 @@ export default function Product() {
 
         {reducedNumber && (
           <div className="metafield-row">
-            <span className="metafield-label">Número reducido: {reducedNumber}</span>
+            <span className="metafield-reduced-number">Número reducido: {reducedNumber}</span>
           </div>
         )}
 
         {referenceNumber && (
           <div className="metafield-row">
-            <span className="metafield-label">Referencia: {referenceNumber}</span>
+            <span className="metafield-reference">Referencia: {referenceNumber}</span>
           </div>
         )}
         
