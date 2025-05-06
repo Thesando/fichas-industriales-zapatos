@@ -229,12 +229,12 @@ export default function Product() {
             </li>
 
             {/* Botón "Consultor CA" */}
-            <button className="consultant-button">
-              <a href={consultorCA} className='color-CA'>Consultor CA</a>
+            <button className="consultant-button" href={consultorCA}>
+              Consultor CA
             </button>
           </div>
         )}
-        
+
       </div>
     </div>
   );
