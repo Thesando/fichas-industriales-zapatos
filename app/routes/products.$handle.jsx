@@ -99,6 +99,9 @@ export default function Product() {
   const maxNumber = getMetafieldValue('custom', 'max_number');
   const CA = getMetafieldValue('custom', 'ca');
   const consultorCA = getMetafieldValue('custom', 'consultor_ca_link');
+  const fichaEs = getMetafieldValue('custom', 'ficha_tecnica_es');
+  const fichaEn = getMetafieldValue('custom', 'ficha_tecnica_en');
+  const fichaPt = getMetafieldValue('custom', 'ficha_tecnica_pt')
 
   const iconosImage = product.metafields.find(
     mf => mf?.key === 'image_icons'
@@ -220,7 +223,6 @@ export default function Product() {
 
         <hr className="line-break" />
 
-
         {CA && consultorCA && (
           <div className="consultant-container">
             {/* Texto "CA: 37455" */}
@@ -237,6 +239,15 @@ export default function Product() {
             </button>
           </div>
         )}
+
+        {fichaEs && fichaEn && fichaPt && (
+          <div className='custom-download-technical'>
+            <button className='product-download-list' onClick={() => {window.open(fichaEs, '_blank')}}>Ficha técnica ES</button>
+            <button className='product-download-list' onClick={() => {window.open(fichaEn, '_blank')}}>Ficha técnica EN</button>
+            <button className='product-download-list' onClick={() => {window.open(fichaPt, '_blank')}}>Ficha técnica PT</button>
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -294,7 +305,10 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "min_number"},
     {namespace: "custom", key: "max_number"},
     {namespace: "custom", key: "ca"},
-    {namespace: "custom", key: "consultor_ca_link"}
+    {namespace: "custom", key: "consultor_ca_link"},
+    {namespace: "custom", key: "ficha_tecnica_es"},
+    {namespace: "custom", key: "ficha_tecnica_en"},
+    {namespace: "custom", key: "ficha_tecnica_pt"}
   ]) {
     namespace
     key

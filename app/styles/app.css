@@ -575,8 +575,32 @@ button.reset:hover:not(:has(> *)) {
   width: 70%;
 }
 
-.color-CA{
-  color: #fff;
+.custom-download-technical{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.product-download-list{
+  font-family: 'Rajdhani', sans-serif;
+  flex: 1;
+  width: 30%;
+  background-color: #FFF; 
+  border: 2px solid #646464; 
+  border-radius: 5px; 
+  color: #646464;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.product-download-list:hover{
+  background-color: #646464; 
+  color: #FFF;
 }
 
 /*Modal para el catalogo de productos*/
