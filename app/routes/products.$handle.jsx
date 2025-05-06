@@ -84,6 +84,7 @@ export default function Product() {
   /** @type {LoaderReturnData} */
   const { product } = useLoaderData();
   const [selectedImage, setSelectedImage] = useState(product?.images?.nodes?.[0] || null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Método más seguro para metafields
   const getMetafieldValue = (namespace, key) => {
@@ -94,6 +95,8 @@ export default function Product() {
 
   const reducedNumber = getMetafieldValue('custom', 'numero_reducido');
   const referenceNumber = getMetafieldValue('custom', 'referencia');
+  const minNumber = getMetafieldValue('custom', 'min_number');
+  const maxNumber = getMetafieldValue('custom', 'max_number');
 
   const iconosImage = product.metafields.find(
     mf => mf?.key === 'image_icons'
@@ -171,6 +174,48 @@ export default function Product() {
         )}
 
         <div className="product-description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+
+        {minNumber && maxNumber && (
+          <div className="size-guide-container">
+            {/* Columna izquierda */}
+            <div className="size-info">
+              <p className="label-size-column">Tamaño de columna</p>
+              <p className="range-size-shoes">De {minNumber} a {maxNumber}</p>
+            </div>
+
+            {/* Columna derecha */}
+            <div className="size-link">
+              {/* Botón que abre el modal */}
+              <button
+                className="guide-size-button"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Guía de tallas
+              </button>
+            </div>
+
+            {/* Modal */}
+            {isModalOpen && (
+              <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    className="modal-close-button"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    &times;
+                  </button>
+                  {/* Imagen responsiva (reemplaza con tu URL de Shopify) */}
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0688/5113/8848/files/tabla_de_medidas_800x800.png?v=1746548277"
+                    alt="Guía de tallas"
+                    className="responsive-image"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -224,7 +269,9 @@ const PRODUCT_FRAGMENT = `#graphql
      metafields(identifiers: [
     {namespace: "custom", key: "numero_reducido"},
     {namespace: "custom", key: "referencia"},
-    {namespace: "custom", key: "image_icons"}
+    {namespace: "custom", key: "image_icons"},
+    {namespace: "custom", key: "min_number"},
+    {namespace: "custom", key: "max_number"}
   ]) {
     namespace
     key

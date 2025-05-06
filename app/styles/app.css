@@ -488,6 +488,94 @@ button.reset:hover:not(:has(> *)) {
   height: auto;
 }
 
+.size-guide-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.size-info, .size-link {
+  margin-bottom: 1rem;
+  margin-right: 3rem;
+}
+
+.label-size-column {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  color: #646464;
+  font-weight: 700;
+}
+
+.range-size-shoes{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 30px;
+  color: #646464;
+  font-weight: 700;
+}
+
+.guide-size{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  color: #EA0029;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/*Modal para el catalogo de productos*/
+/* Botón de guía de tallas */
+.guide-size-button {
+  background: none;
+  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  color: #EA0029;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+}
+
+/* Imagen responsiva */
+.responsive-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Botón de cerrar */
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .product-main {
   align-self: start;
   position: sticky;
