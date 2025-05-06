@@ -220,6 +220,7 @@ export default function Product() {
 
         <hr className="line-break" />
 
+
         {CA && consultorCA && (
           <div className="consultant-container">
             {/* Texto "CA: 37455" */}
@@ -229,12 +230,13 @@ export default function Product() {
             </li>
 
             {/* Botón "Consultor CA" */}
-            <button className="consultant-button" href={consultorCA}>
+            <button className="consultant-button" onClick={() => {
+              window.open(consultorCA, '_blank'); // Abre en nueva pestaña
+            }}>
               Consultor CA
             </button>
           </div>
         )}
-
       </div>
     </div>
   );
