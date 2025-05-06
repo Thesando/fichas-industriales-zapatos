@@ -522,6 +522,63 @@ button.reset:hover:not(:has(> *)) {
   cursor: pointer;
 }
 
+.line-break{
+  border: none;
+  height: 1px;
+  background-color: #646464;
+  width: 95%;
+  margin: 1rem 0; /* Espaciado opcional */
+}
+
+.consultant-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.product-approval-certificate{
+  display: inline-flex;
+  background-color: #fff;
+  border: 1px solid #009736;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.certificate-span{
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #059636 !important;
+  color: #fff;
+  padding: 7px 3px !important;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.certificate-code{
+  font-family: 'Rajdhani', sans-serif;
+  color: #646464;
+  padding: 7px 4px !important;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.consultant-button {
+  background-color: #646464; 
+  border: 1px solid #646464;    
+  border-radius: 5px; 
+  color: #fff;       
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 3rem;
+  width: 70%;
+}
+
+.color-CA{
+  color: #fff;
+}
+
 /*Modal para el catalogo de productos*/
 /* Botón de guía de tallas */
 .guide-size-button {
@@ -778,5 +835,9 @@ button.reset:hover:not(:has(> *)) {
 
   .detail-of-product {
     margin-left: 20px;
+  }
+
+  .consultant-button {
+    width: 50%;
   }
 }

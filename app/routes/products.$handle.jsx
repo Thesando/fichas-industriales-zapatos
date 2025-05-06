@@ -97,6 +97,8 @@ export default function Product() {
   const referenceNumber = getMetafieldValue('custom', 'referencia');
   const minNumber = getMetafieldValue('custom', 'min_number');
   const maxNumber = getMetafieldValue('custom', 'max_number');
+  const CA = getMetafieldValue('custom', 'ca');
+  const consultorCA = getMetafieldValue('custom', 'consultor_ca_link');
 
   const iconosImage = product.metafields.find(
     mf => mf?.key === 'image_icons'
@@ -216,6 +218,23 @@ export default function Product() {
           </div>
         )}
 
+        <hr className="line-break" />
+
+        {CA && consultorCA && (
+          <div className="consultant-container">
+            {/* Texto "CA: 37455" */}
+            <li className='product-approval-certificate'>
+              <span className='certificate-span'>CA: </span>
+              <div className='certificate-code'>{CA}</div>
+            </li>
+
+            {/* Botón "Consultor CA" */}
+            <button className="consultant-button">
+              <a href={consultorCA} className='color-CA'>Consultor CA</a>
+            </button>
+          </div>
+        )}
+        
       </div>
     </div>
   );
@@ -271,7 +290,9 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "referencia"},
     {namespace: "custom", key: "image_icons"},
     {namespace: "custom", key: "min_number"},
-    {namespace: "custom", key: "max_number"}
+    {namespace: "custom", key: "max_number"},
+    {namespace: "custom", key: "ca"},
+    {namespace: "custom", key: "consultor_ca_link"}
   ]) {
     namespace
     key
