@@ -437,7 +437,7 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "src"},
     {namespace: "custom", key: "tiras_horizontales"},
     {namespace: "custom", key: "impermeabilidad"},
-    {namespace: "custom", key: "suela"},
+    {namespace: "custom", key: "sole"},
     {namespace: "custom", key: "ranura_del_tobillo"},
     {namespace: "custom", key: "forro_interior"},
     {namespace: "custom", key: "carga_nitrilica"}
