@@ -101,7 +101,8 @@ export default function Product() {
   const consultorCA = getMetafieldValue('custom', 'consultor_ca_link');
   const fichaEs = getMetafieldValue('custom', 'ficha_tecnica_es');
   const fichaEn = getMetafieldValue('custom', 'ficha_tecnica_en');
-  const fichaPt = getMetafieldValue('custom', 'ficha_tecnica_pt')
+  const fichaPt = getMetafieldValue('custom', 'ficha_tecnica_pt');
+  const fichaComercial = getMetafieldValue('custom', 'ficha_comercial');
 
   const iconosImage = product.metafields.find(
     mf => mf?.key === 'image_icons'
@@ -242,9 +243,15 @@ export default function Product() {
 
         {fichaEs && fichaEn && fichaPt && (
           <div className='custom-download-technical'>
-            <button className='product-download-list' onClick={() => {window.open(fichaEs, '_blank')}}>Ficha técnica ES</button>
-            <button className='product-download-list' onClick={() => {window.open(fichaEn, '_blank')}}>Ficha técnica EN</button>
-            <button className='product-download-list' onClick={() => {window.open(fichaPt, '_blank')}}>Ficha técnica PT</button>
+            <button className='product-download-list' onClick={() => { window.open(fichaEs, '_blank') }}>Ficha técnica ES</button>
+            <button className='product-download-list' onClick={() => { window.open(fichaEn, '_blank') }}>Ficha técnica EN</button>
+            <button className='product-download-list' onClick={() => { window.open(fichaPt, '_blank') }}>Ficha técnica PT</button>
+          </div>
+        )}
+
+        {fichaComercial && (
+          <div className='custom-download-comercial'>
+            <button className='product-comercial-list' onClick={() => { window.open(fichaComercial, '_blank') }}> Ficha comercial PT</button>
           </div>
         )}
 
@@ -308,7 +315,8 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "consultor_ca_link"},
     {namespace: "custom", key: "ficha_tecnica_es"},
     {namespace: "custom", key: "ficha_tecnica_en"},
-    {namespace: "custom", key: "ficha_tecnica_pt"}
+    {namespace: "custom", key: "ficha_tecnica_pt"},
+    {namespace: "custom", key: "ficha_comercial"}
   ]) {
     namespace
     key

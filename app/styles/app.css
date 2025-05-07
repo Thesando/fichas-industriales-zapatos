@@ -581,6 +581,7 @@ button.reset:hover:not(:has(> *)) {
   gap: 14px;
   justify-content: space-between;
   margin-right: 1rem;
+  margin-top: 24px;
 }
 
 .product-download-list{
@@ -601,6 +602,30 @@ button.reset:hover:not(:has(> *)) {
 .product-download-list:hover{
   background-color: #646464; 
   color: #FFF;
+}
+
+.custom-download-comercial{
+  margin-right: 1rem;
+  margin-top: 24px;
+}
+
+.product-comercial-list{
+  font-family: 'Rajdhani', sans-serif;
+  width: 100%;
+  color: #EA0029;
+  background-color: #FFF; 
+  border: 2px solid #EA0029; 
+  border-radius: 5px; 
+  font-size: 22px;
+  font-weight: 700;
+  padding: 5px 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.product-comercial-list:hover{
+  color: #FFF;
+  background-color: #EA0029;
 }
 
 /*Modal para el catalogo de productos*/
