@@ -115,6 +115,7 @@ export default function Product() {
   const E = getMetafieldValue('custom', 'ee');
   const FO = getMetafieldValue('custom', 'fo');
   const sra = getMetafieldValue('custom', 'sra');
+  const src = getMetafieldValue('custom', 'src');
   const horizontalStrips = getMetafieldValue('custom', 'tiras_horizontales');
   const impermeability = getMetafieldValue('custom', 'impermeabilidad');
   const sole = getMetafieldValue('custom', 'sole');
@@ -321,6 +322,9 @@ export default function Product() {
           {sra && (
             <p className='description-product'>SRA - {sra} </p>
           )}
+          {src && (
+            <p className='description-product'>SRC - {src} </p>
+          )}
         </div>
 
         <h3>Detalles</h3>
@@ -430,6 +434,7 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "ee"},
     {namespace: "custom", key: "fo"},
     {namespace: "custom", key: "sra"},
+    {namespace: "custom", key: "src"},
     {namespace: "custom", key: "tiras_horizontales"},
     {namespace: "custom", key: "impermeabilidad"},
     {namespace: "custom", key: "suela"},
