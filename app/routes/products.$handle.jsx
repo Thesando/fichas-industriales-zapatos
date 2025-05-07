@@ -118,7 +118,7 @@ export default function Product() {
   const src = getMetafieldValue('custom', 'src');
   const horizontalStrips = getMetafieldValue('custom', 'tiras_horizontales');
   const impermeability = getMetafieldValue('custom', 'impermeabilidad');
-  const sole = getMetafieldValue('custom', 'sole');
+  const sole = getMetafieldValue('custom', 'suela');
   const ankleGroove = getMetafieldValue('custom', 'ranura_del_tobillo');
   const innerLining = getMetafieldValue('custom', 'forro_interior');
   const nitrileFiller = getMetafieldValue('custom', 'carga_nitrilica');
@@ -437,7 +437,7 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "src"},
     {namespace: "custom", key: "tiras_horizontales"},
     {namespace: "custom", key: "impermeabilidad"},
-    {namespace: "custom", key: "sole"},
+    {namespace: "custom", key: "suela"},
     {namespace: "custom", key: "ranura_del_tobillo"},
     {namespace: "custom", key: "forro_interior"},
     {namespace: "custom", key: "carga_nitrilica"}
