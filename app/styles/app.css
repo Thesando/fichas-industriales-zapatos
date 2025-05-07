@@ -628,6 +628,38 @@ button.reset:hover:not(:has(> *)) {
   background-color: #EA0029;
 }
 
+.container-description{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 20px;
+}
+
+.container-description h3{
+  color: #EA0029;
+  font-size: 32px;
+}
+
+.container-description h5{
+  font-size: 16px;
+}
+
+.container-description ul{
+  color: #646464;
+}
+
+.container-description strong{
+  color: #000;
+}
+
+.description-product{
+  font-size: 16px;
+  color: #646464;
+}
+.main-characteristics{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 /*Modal para el catalogo de productos*/
 /* Botón de guía de tallas */
 .guide-size-button {
