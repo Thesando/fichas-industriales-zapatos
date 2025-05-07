@@ -111,6 +111,7 @@ export default function Product() {
   const size = getMetafieldValue('custom', 'altura');
   const weightPerFoot = getMetafieldValue('custom', 'peso_por_pie');
   const sb = getMetafieldValue('custom', 'sb');
+  const ob = getMetafieldValue('custom', 'ob');
   const E = getMetafieldValue('custom', 'ee');
   const FO = getMetafieldValue('custom', 'fo');
   const sra = getMetafieldValue('custom', 'sra');
@@ -308,6 +309,9 @@ export default function Product() {
           {sb && (
             <p className='description-product'>SB - {sb}</p>
           )}
+          {ob && (
+            <p className='description-product'>OB - {ob}</p>
+          )}
           {E && (
             <p className='description-product'>E - {E}</p>
           )}
@@ -422,6 +426,7 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "altura"},
     {namespace: "custom", key: "peso_por_pie"},
     {namespace: "custom", key: "sb"},
+    {namespace: "custom", key: "ob"},
     {namespace: "custom", key: "ee"},
     {namespace: "custom", key: "fo"},
     {namespace: "custom", key: "sra"},
