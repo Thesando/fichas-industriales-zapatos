@@ -261,13 +261,17 @@ export default function Product() {
             </div>
           )}
 
-          {fichaEs && fichaEn && fichaPt && (
-            <div className='custom-download-technical'>
+          <div className='custom-download-technical'>
+            {fichaEs && (
               <button className='product-download-list' onClick={() => { window.open(fichaEs, '_blank') }}>Ficha técnica ES</button>
+            )}
+            {fichaEn && (
               <button className='product-download-list' onClick={() => { window.open(fichaEn, '_blank') }}>Ficha técnica EN</button>
+            )}
+            {fichaPt && (
               <button className='product-download-list' onClick={() => { window.open(fichaPt, '_blank') }}>Ficha técnica PT</button>
-            </div>
-          )}
+            )}
+          </div>
 
           {fichaComercial && (
             <div className='custom-download-comercial'>
@@ -341,23 +345,23 @@ export default function Product() {
           )}
           {sole && (
             <li className="detail-item">
-            <strong>SUELA:</strong> {sole}
-          </li>
+              <strong>SUELA:</strong> {sole}
+            </li>
           )}
           {ankleGroove && (
             <li className="detail-item">
-            <strong>RANURA DEL TOBILLO:</strong> {ankleGroove}
-          </li>
+              <strong>RANURA DEL TOBILLO:</strong> {ankleGroove}
+            </li>
           )}
           {innerLining && (
             <li className="detail-item">
-            <strong>FORRO INTERIOR:</strong> {innerLining}
-          </li>
+              <strong>FORRO INTERIOR:</strong> {innerLining}
+            </li>
           )}
           {nitrileFiller && (
             <li className="detail-item">
-            <strong>CARGA NITRÍLICA:</strong> {nitrileFiller}
-          </li>
+              <strong>CARGA NITRÍLICA:</strong> {nitrileFiller}
+            </li>
           )}
         </ul>
       </div>
