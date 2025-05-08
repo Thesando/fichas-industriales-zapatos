@@ -121,7 +121,7 @@ export default function Product() {
   const sole = getMetafieldValue('custom', 'suela');
   const ankleGroove = getMetafieldValue('custom', 'ranura_del_tobillo');
   const innerLining = getMetafieldValue('custom', 'forro_interior');
-  const designSole = getMetafieldValue('custom', 'dise_o_de_suela') 
+  const designSole = getMetafieldValue('custom', 'dise_o_de_suela');
   const nitrileFiller = getMetafieldValue('custom', 'carga_nitrilica');
 
   const iconosImage = product.metafields.find(
@@ -361,8 +361,8 @@ export default function Product() {
           )}
           {designSole && (
             <li className="detail-item">
-            <strong>DISEÑO DE SUELA:</strong> {designSole}
-          </li>
+              <strong>DISEÑO DE SUELA:</strong> {designSole}
+            </li>
           )}
           {nitrileFiller && (
             <li className="detail-item">
