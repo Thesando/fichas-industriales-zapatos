@@ -21,10 +21,29 @@ export default function NewsletterForm() {
       return;
     }
 
+    // Obtener correos del localStorage
+    const storedEmails = JSON.parse(localStorage.getItem('newsletterEmails') || '[]');
+
+    // Verificar duplicados
+    if (storedEmails.includes(email)) {
+      toast.warning('¡Este correo ya está registrado!', {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
     const form = e.target;
     const formData = new FormData(form);
 
     try {
+      // 1. Guardar localmente primero
+      localStorage.setItem(
+        'newsletterEmails',
+        JSON.stringify([...storedEmails, email])
+      );
+
       const response = await fetch('https://formspree.io/f/mnndnwlp', {
         method: 'POST',
         body: formData,
@@ -70,11 +89,11 @@ export default function NewsletterForm() {
           <p className='newsletter2'>RECIBA NOVEDADES</p>
         </div>
         <div className='col-lg-6 col-md-8 col-sm-10 offset-lg-1'>
-          <form 
-            autoComplete="off" 
-            method="post" 
-            onSubmit={handleSubmit} 
-            className="w-100" 
+          <form
+            autoComplete="off"
+            method="post"
+            onSubmit={handleSubmit}
+            className="w-100"
             style={{ maxWidth: 'none' }}
           >
             <div className='d-flex flex-column flex-sm-row'>
