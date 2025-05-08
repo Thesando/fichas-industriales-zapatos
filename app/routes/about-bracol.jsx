@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/about-bracol.css';
 import 'react-toastify/dist/ReactToastify.css';
-import NewsletterForm from '../components/NewsletterForm';
+import NewsLetterForm from '../components/NewsLetterForm.jsx'
 
 export default function AboutBracol() {
   return (
@@ -166,7 +166,7 @@ export default function AboutBracol() {
         </div>
       </section>
 
-      <NewsletterForm />
+      <NewsLetterForm />
     </>
   );
 }
