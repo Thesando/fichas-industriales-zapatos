@@ -133,7 +133,7 @@ export function Header() {
                 <div className='popover-column'>
                   <h2>Lineas</h2>
                   <NavLink to="/collections/acqua-flex" className="popover-item">Acqua Flex</NavLink>
-                  <NavLink to="/productos/acqua-lev" className="popover-item">Acqua Lev</NavLink>
+                  <NavLink to="/collections/acqua-lev" className="popover-item">Acqua Lev</NavLink>
                   <NavLink to="/productos/linea3" className="popover-item">Antiestetico</NavLink>
                   <NavLink to="/productos/linea4" className="popover-item">Blanco</NavLink>
                   <NavLink to="/productos/linea5" className="popover-item">Color</NavLink>
@@ -312,7 +312,7 @@ export function Header() {
               {showLines && (
                 <div className="mobile-submenu">
                   <NavLink to="/collections/acqua-flex" className="mobile-submenu-item" onClick={toggleMenu}>Acqua Flex</NavLink>
-                  <NavLink to="/productos/acqua-lev" className="mobile-submenu-item" onClick={toggleMenu}>Acqua Lev</NavLink>
+                  <NavLink to="/collections/acqua-lev" className="mobile-submenu-item" onClick={toggleMenu}>Acqua Lev</NavLink>
                   <NavLink to="/productos/linea3" className="mobile-submenu-item" onClick={toggleMenu}>Antiestetico</NavLink>
                   <NavLink to="/productos/linea4" className="mobile-submenu-item" onClick={toggleMenu}>Blanco</NavLink>
                   <NavLink to="/productos/linea5" className="mobile-submenu-item" onClick={toggleMenu}>Color</NavLink>
