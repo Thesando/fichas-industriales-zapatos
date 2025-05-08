@@ -121,6 +121,7 @@ export default function Product() {
   const sole = getMetafieldValue('custom', 'suela');
   const ankleGroove = getMetafieldValue('custom', 'ranura_del_tobillo');
   const innerLining = getMetafieldValue('custom', 'forro_interior');
+  const designSole = getMetafieldValue('custom', 'dise_o_de_suela') 
   const nitrileFiller = getMetafieldValue('custom', 'carga_nitrilica');
 
   const iconosImage = product.metafields.find(
@@ -358,6 +359,11 @@ export default function Product() {
               <strong>FORRO INTERIOR:</strong> {innerLining}
             </li>
           )}
+          {designSole && (
+            <li className="detail-item">
+            <strong>DISEÑO DE SUELA:</strong> {designSole}
+          </li>
+          )}
           {nitrileFiller && (
             <li className="detail-item">
               <strong>CARGA NITRÍLICA:</strong> {nitrileFiller}
@@ -444,6 +450,7 @@ const PRODUCT_FRAGMENT = `#graphql
     {namespace: "custom", key: "suela"},
     {namespace: "custom", key: "ranura_del_tobillo"},
     {namespace: "custom", key: "forro_interior"},
+    {namespace: "custom", key: "dise_o_de_suela"},
     {namespace: "custom", key: "carga_nitrilica"}
   ]) {
     namespace
