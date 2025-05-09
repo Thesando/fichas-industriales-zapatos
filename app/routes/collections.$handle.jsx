@@ -130,9 +130,9 @@ function ProductItem({product, loading}) {
         />
       )}
       <h4>{product.title}</h4>
-      <small>
+      {/* <small>
         <Money data={product.priceRange.minVariantPrice} />
-      </small>
+      </small> */}
     </Link>
   );
 }
