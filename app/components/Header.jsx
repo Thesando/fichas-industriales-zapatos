@@ -198,7 +198,7 @@ export function Header() {
                 <div className='popover-column'>
                   <NavLink to="segmentos/linea1" className="popover-item">Agronegocios</NavLink>
                   <NavLink to="segmentos/linea2" className="popover-item">Construcción civil</NavLink>
-                  <NavLink to="segmentos/linea3" className="popover-item">Industria alimentaria</NavLink>
+                  <NavLink to="collections/industria-alimentaria" className="popover-item">Industria alimentaria</NavLink>
                   <NavLink to="segmentos/linea4" className="popover-item">Offshore</NavLink>
                   <NavLink to="segmentos/linea5" className="popover-item">Mineria</NavLink>
                   <NavLink to="segmentos/linea6" className="popover-item">Energia y telecomunicaciones</NavLink>
@@ -366,7 +366,7 @@ export function Header() {
                 <div className="mobile-submenu">
                   <NavLink to="segmentos/linea2" className="mobile-submenu-item">Construcción civil</NavLink>
                   <NavLink to="segmentos/linea1" className="mobile-submenu-item">Agronegocios</NavLink>
-                  <NavLink to="segmentos/linea3" className="mobile-submenu-item">Industria alimentaria</NavLink>
+                  <NavLink to="collections/industria-alimentaria" className="mobile-submenu-item">Industria alimentaria</NavLink>
                   <NavLink to="segmentos/linea4" className="mobile-submenu-item">Offshore</NavLink>
                   <NavLink to="segmentos/linea5" className="mobile-submenu-item">Mineria</NavLink>
                   <NavLink to="segmentos/linea6" className="mobile-submenu-item">Energia y telecomunicaciones</NavLink>
