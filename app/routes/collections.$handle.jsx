@@ -1,19 +1,19 @@
-import {redirect} from '@shopify/remix-oxygen';
-import {useLoaderData, Link} from '@remix-run/react';
+import { redirect } from '@shopify/remix-oxygen';
+import { useLoaderData, Link } from '@remix-run/react';
 import {
   getPaginationVariables,
-  Image,
-  Money,
-  Analytics,
+  Image
 } from '@shopify/hydrogen';
-import {useVariantUrl} from '~/lib/variants';
-import {PaginatedResourceSection} from '~/components/PaginatedResourceSection';
+import { useVariantUrl } from '~/lib/variants';
+import { PaginatedResourceSection } from '~/components/PaginatedResourceSection';
+import { useState } from 'react';
+import '../styles/collections.css';
 
 /**
  * @type {MetaFunction<typeof loader>}
  */
-export const meta = ({data}) => {
-  return [{title: `Hydrogen | ${data?.collection.title ?? ''} Collection`}];
+export const meta = ({ data }) => {
+  return [{ title: `Hydrogen | ${data?.collection.title ?? ''} Collection` }];
 };
 
 /**
@@ -26,7 +26,7 @@ export async function loader(args) {
   // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
 
-  return {...deferredData, ...criticalData};
+  return { ...deferredData, ...criticalData };
 }
 
 /**
@@ -34,9 +34,9 @@ export async function loader(args) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  * @param {LoaderFunctionArgs}
  */
-async function loadCriticalData({context, params, request}) {
-  const {handle} = params;
-  const {storefront} = context;
+async function loadCriticalData({ context, params, request }) {
+  const { handle } = params;
+  const { storefront } = context;
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   });
@@ -45,9 +45,9 @@ async function loadCriticalData({context, params, request}) {
     throw redirect('/collections');
   }
 
-  const [{collection}] = await Promise.all([
+  const [{ collection }] = await Promise.all([
     storefront.query(COLLECTION_QUERY, {
-      variables: {handle, ...paginationVariables},
+      variables: { handle, ...paginationVariables },
       // Add other queries here, so that they are loaded in parallel
     }),
   ]);
@@ -69,38 +69,114 @@ async function loadCriticalData({context, params, request}) {
  * Make sure to not throw any errors here, as it will cause the page to 500.
  * @param {LoaderFunctionArgs}
  */
-function loadDeferredData({context}) {
+function loadDeferredData({ context }) {
   return {};
 }
 
 export default function Collection() {
   /** @type {LoaderReturnData} */
-  const {collection} = useLoaderData();
+  const { collection } = useLoaderData();
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [activeTab, setActiveTab] = useState(null);
+
+  // Filtramos los productos basados en los tags seleccionados
+  const filteredProducts = selectedTags.length === 0
+    ? collection.products.nodes
+    : collection.products.nodes.filter(product =>
+      selectedTags.every(tag => product.tags.includes(tag))
+    );
 
   return (
-    <div className="collection">
+    <div className="collection-page">
       <h1>{collection.title}</h1>
-      <p className="collection-description">{collection.description}</p>
-      <PaginatedResourceSection
+      {/* <p className="collection-description">{collection.description}</p> */}
+      {/*  <PaginatedResourceSection
         connection={collection.products}
         resourcesClassName="products-grid"
       >
-        {({node: product, index}) => (
+        {({ node: product, index }) => (
           <ProductItem
             key={product.id}
             product={product}
             loading={index < 8 ? 'eager' : undefined}
           />
         )}
-      </PaginatedResourceSection>
-      <Analytics.CollectionView
-        data={{
-          collection: {
-            id: collection.id,
-            handle: collection.handle,
-          },
-        }}
-      />
+      </PaginatedResourceSection> */}
+      <div className="collection-content">
+        {/* Sidebar de filtros */}
+        <div className="filters-sidebar">
+          {/* Pestaña Material Superior */}
+          <div className="filter-tab">
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab(activeTab === 'material' ? null : 'material')}
+            >
+              <span>Material Superior</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+
+            {activeTab === 'material' && (
+              <div className="filter-tab-content">
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('PVC (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('PVC (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'PVC (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'PVC (Material superior)']);
+                      }
+                    }}
+                  />
+                  PVC
+                </label>
+              </div>
+            )}
+          </div>
+
+          {/* Pestaña Puntera */}
+          <div className="filter-tab" style={{ marginTop: '16px' }}>
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab(activeTab === 'puntera' ? null : 'puntera')}
+            >
+              <span>Puntera</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+
+            {activeTab === 'puntera' && (
+              <div className="filter-tab-content">
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('No tiene (Puntera)')}
+                    onChange={() => {
+                      if (selectedTags.includes('No tiene (Puntera)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'No tiene (Puntera)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'No tiene (Puntera)']);
+                      }
+                    }}
+                  />
+                  No tiene
+                </label>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Grid de productos */}
+        <div className="products-grid">
+          {filteredProducts.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -111,7 +187,7 @@ export default function Collection() {
  *   loading?: 'eager' | 'lazy';
  * }}
  */
-function ProductItem({product, loading}) {
+function ProductItem({ product, loading }) {
   const variantUrl = useVariantUrl(product.handle);
   return (
     <Link
@@ -130,9 +206,6 @@ function ProductItem({product, loading}) {
         />
       )}
       <h4>{product.title}</h4>
-      {/* <small>
-        <Money data={product.priceRange.minVariantPrice} />
-      </small> */}
     </Link>
   );
 }

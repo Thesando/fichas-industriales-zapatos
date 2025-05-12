@@ -1,0 +1,78 @@
+/* Estilos generales */
+.collection-page {
+  padding: 20px;
+}
+
+.collection-title {
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.collection-content {
+  display: flex;
+  gap: 24px;
+}
+
+/* Sidebar de filtros */
+.filters-sidebar {
+  width: 25%; /* Similar a col-lg-4 */
+}
+
+.filter-tab {
+  background-color: #ff0000; /* Rojo */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.filter-tab-header {
+  padding: 12px 16px;
+  color: white;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-tab-header svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+.filter-tab-header.active svg {
+  transform: rotate(180deg);
+}
+
+.filter-tab-content {
+  background-color: #e0e0e0; /* Gris */
+  padding: 12px 16px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Grid de productos */
+.products-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Estilos para el ProductItem (puedes personalizarlos más) */
+.product-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-item h4 {
+  margin-top: 8px;
+  font-size: 16px;
+}
