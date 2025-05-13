@@ -26,6 +26,11 @@
     background-color: #f40;
     border-radius: 5px;
     overflow: hidden;
+    margin-top: 16px;
+}
+
+.filter-tab:first-child {
+  margin-top: 0;
 }
 
 .filter-tab-header {
@@ -162,6 +167,7 @@
         position: relative;
         animation: slideIn 0.3s ease-out;
         box-sizing: border-box;
+        overflow-y: auto;
     }
 
     .close-menu-filter-button {

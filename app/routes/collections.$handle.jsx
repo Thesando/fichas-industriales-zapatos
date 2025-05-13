@@ -80,8 +80,14 @@ export default function Collection() {
   const [isMenuFilterOpen, setIsMenuFilterOpen] = useState(false);
   const [activeTab1, setActiveTab1] = useState(null);
   const [activeTab2, setActiveTab2] = useState(null);
+  const [activeTab3, setActiveTab3] = useState(null);
+  const [activeTab4, setActiveTab4] = useState(null);
   const [showLines, setShowLines] = useState(false);
   const [showLines2, setShowLines2] = useState(false);
+  const [showLines3, setShowLines3] = useState(false);
+  const [showLines4, setShowLines4] = useState(false);
+
+
 
 
   const toggleLines = () => {
@@ -90,6 +96,14 @@ export default function Collection() {
 
   const toggleLines2 = () => {
     setShowLines2(!showLines2);
+  }
+
+  const toggleLines3 = () => {
+    setShowLines3(!showLines3);
+  }
+
+  const toggleLines4 = () => {
+    setShowLines4(!showLines4);
   }
 
   // Filtramos los productos basados en los tags seleccionados
@@ -253,20 +267,6 @@ export default function Collection() {
                 <label className="filter-option">
                   <input
                     type="checkbox"
-                    checked={selectedTags.includes('Cuero grasoso (Material superior)')}
-                    onChange={() => {
-                      if (selectedTags.includes('Cuero grasoso (Material superior)')) {
-                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
-                      } else {
-                        setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
-                      }
-                    }}
-                  />
-                  Cuero grasoso
-                </label>
-                <label className="filter-option">
-                  <input
-                    type="checkbox"
                     checked={selectedTags.includes('Crazy horse (Material superior)')}
                     onChange={() => {
                       if (selectedTags.includes('Crazy horse (Material superior)')) {
@@ -297,7 +297,7 @@ export default function Collection() {
           </div>
 
           {/* Pestaña Puntera */}
-          <div className="filter-tab" style={{ marginTop: '16px' }}>
+          <div className="filter-tab">
             <div
               className="filter-tab-header"
               onClick={() => setActiveTab2(activeTab2 === 'puntera' ? null : 'puntera')}
@@ -383,6 +383,166 @@ export default function Collection() {
               </div>
             )}
           </div>
+
+          {/* Pestaña Tipo de cierre */}
+          <div className="filter-tab">
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab3(activeTab3 === 'cierre' ? null : 'cierre')}
+            >
+              <span>Tipo de cierre</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab3 ? 'open' : ''}`} viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+            {activeTab3 && (
+              <div className="filter-tab-content">
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Zapatos (Tipo de cierre)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Zapatos (Tipo de cierre)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Zapatos (Tipo de cierre)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Zapatos (Tipo de cierre)']);
+                      }
+                    }}
+                  />
+                  Zapatos
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Velcro (Tipo de cierre)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Velcro (Tipo de cierre)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Velcro (Tipo de cierre)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Velcro (Tipo de cierre)']);
+                      }
+                    }}
+                  />
+                  Velcro
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Elastico (Tipo de cierre)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Elastico (Tipo de cierre)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Elastico (Tipo de cierre)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Elastico (Tipo de cierre)']);
+                      }
+                    }}
+                  />
+                  Elástico
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cremallera (Tipo de cierre)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cremallera (Tipo de cierre)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cremallera (Tipo de cierre)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cremallera (Tipo de cierre)']);
+                      }
+                    }}
+                  />
+                  Cremallera
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cierre total (Tipo de cierre)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cierre total (Tipo de cierre)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cierre total (Tipo de cierre)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cierre total (Tipo de cierre)']);
+                      }
+                    }}
+                  />
+                  Cierre total
+                </label>
+              </div>
+            )}
+          </div>
+
+          {/* Pestaña Plantilla */}
+          <div className="filter-tab">
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab4(activeTab4 === 'plantilla' ? null : 'plantilla')}
+            >
+              <span>Plantilla</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab4 ? 'open' : ''}`} viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+            {activeTab4 && (
+              <div className='filter-tab-content'>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('TNT (Plantilla)')}
+                    onChange={() => {
+                      if (selectedTags.includes('TNT (Plantilla)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'TNT (Plantilla)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'TNT (Plantilla)']);
+                      }
+                    }}
+                  />
+                  TNT - Tela no tejida
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Acero (Plantilla)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Acero (Plantilla)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Acero (Plantilla)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Acero (Plantilla)']);
+                      }
+                    }}
+                  />
+                  Acero
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('PRP (Plantilla)')}
+                    onChange={() => {
+                      if (selectedTags.includes('PRP (Plantilla)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'PRP (Plantilla)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'PRP (Plantilla)']);
+                      }
+                    }}
+                  />
+                  PRP - Plantilla resistente a la pinchazon
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('No tiene (Plantilla)')}
+                    onChange={() => {
+                      if (selectedTags.includes('No tiene (Plantilla)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'No tiene (Plantilla)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'No tiene (Plantilla)']);
+                      }
+                    }}
+                  />
+                  No tiene
+                </label>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Grid de productos */}
@@ -395,7 +555,6 @@ export default function Collection() {
           </div>
 
           {/*Menu para filtros mobile */}
-
           {isMenuFilterOpen && (
             <div className='mobile-filter-menu-overlay'>
               <div className='mobile-filter-menu-container'>
@@ -547,20 +706,6 @@ export default function Collection() {
                         <label className="filter-option">
                           <input
                             type="checkbox"
-                            checked={selectedTags.includes('Cuero grasoso (Material superior)')}
-                            onChange={() => {
-                              if (selectedTags.includes('Cuero grasoso (Material superior)')) {
-                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
-                              } else {
-                                setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
-                              }
-                            }}
-                          />
-                          Cuero grasoso
-                        </label>
-                        <label className="filter-option">
-                          <input
-                            type="checkbox"
                             checked={selectedTags.includes('Crazy horse (Material superior)')}
                             onChange={() => {
                               if (selectedTags.includes('Crazy horse (Material superior)')) {
@@ -668,6 +813,160 @@ export default function Collection() {
                             }}
                           />
                           Acero
+                        </label>
+                      </>
+                    )}
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines3}>
+                      <span>Tipo de cierre</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow ${showLines3 ? 'open' : ''}`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines3 && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Zapatos (Tipo de cierre)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Zapatos (Tipo de cierre)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Zapatos (Tipo de cierre)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Zapatos (Tipo de cierre)']);
+                              }
+                            }}
+                          />
+                          Zapatos
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Velcro (Tipo de cierre)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Velcro (Tipo de cierre)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Velcro (Tipo de cierre)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Velcro (Tipo de cierre)']);
+                              }
+                            }}
+                          />
+                          Velcro
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Elastico (Tipo de cierre)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Elastico (Tipo de cierre)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Elastico (Tipo de cierre)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Elastico (Tipo de cierre)']);
+                              }
+                            }}
+                          />
+                          Elástico
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cremallera (Tipo de cierre)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cremallera (Tipo de cierre)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cremallera (Tipo de cierre)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cremallera (Tipo de cierre)']);
+                              }
+                            }}
+                          />
+                          Cremallera
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cierre total (Tipo de cierre)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cierre total (Tipo de cierre)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cierre total (Tipo de cierre)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cierre total (Tipo de cierre)']);
+                              }
+                            }}
+                          />
+                          Cierre total
+                        </label>
+                      </>
+                    )}
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines4}>
+                      <span>Plantilla</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow ${showLines4 ? 'open' : ''}`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines4 && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('TNT (Plantilla)')}
+                            onChange={() => {
+                              if (selectedTags.includes('TNT (Plantilla)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'TNT (Plantilla)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'TNT (Plantilla)']);
+                              }
+                            }}
+                          />
+                          TNT - Tela no tejida
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Acero (Plantilla)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Acero (Plantilla)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Acero (Plantilla)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Acero (Plantilla)']);
+                              }
+                            }}
+                          />
+                          Acero
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('PRP (Plantilla)')}
+                            onChange={() => {
+                              if (selectedTags.includes('PRP (Plantilla)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'PRP (Plantilla)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'PRP (Plantilla)']);
+                              }
+                            }}
+                          />
+                          PRP - Plantilla resistente a la pinchazon
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('No tiene (Plantilla)')}
+                            onChange={() => {
+                              if (selectedTags.includes('No tiene (Plantilla)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'No tiene (Plantilla)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'No tiene (Plantilla)']);
+                              }
+                            }}
+                          />
+                          No tiene
                         </label>
                       </>
                     )}
