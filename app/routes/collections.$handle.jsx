@@ -138,6 +138,160 @@ export default function Collection() {
                   />
                   PVC
                 </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cuero (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cuero (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cuero (Material superior)']);
+                      }
+                    }}
+                  />
+                  Cuero
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cuero impermeable (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cuero impermeable (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero impermeable (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cuero impermeable (Material superior)']);
+                      }
+                    }}
+                  />
+                  Cuero impermeable
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Microfibra (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Microfibra (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Microfibra (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Microfibra (Material superior)']);
+                      }
+                    }}
+                  />
+                  Microfibra
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Tejido (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Tejido (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Tejido (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Tejido (Material superior)']);
+                      }
+                    }}
+                  />
+                  Tejido
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Poliuterano (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Poliuterano (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Poliuterano (Material superior)']);
+                      }
+                    }}
+                  />
+                  Poliuterano
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Nobuk (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Nobuk (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Nobuk (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Nobuk (Material superior)']);
+                      }
+                    }}
+                  />
+                  Nobuk
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('PU (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('PU (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'PU (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'PU (Material superior)']);
+                      }
+                    }}
+                  />
+                  PU
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cuero grasoso (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cuero grasoso (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
+                      }
+                    }}
+                  />
+                  Cuero grasoso
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cuero grasoso (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cuero grasoso (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
+                      }
+                    }}
+                  />
+                  Cuero grasoso
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Crazy horse (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Crazy horse (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Crazy horse (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Crazy horse (Material superior)']);
+                      }
+                    }}
+                  />
+                  Crazy horse
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Cuero liso (Material superior)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Cuero liso (Material superior)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero liso (Material superior)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Cuero liso (Material superior)']);
+                      }
+                    }}
+                  />
+                  Cuero liso
+                </label>
               </div>
             )}
           </div>
@@ -159,6 +313,20 @@ export default function Collection() {
                 <label className="filter-option">
                   <input
                     type="checkbox"
+                    checked={selectedTags.includes('Plastico (Puntera)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Plastico (Puntera)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Plastico (Puntera)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Plastico (Puntera)']);
+                      }
+                    }}
+                  />
+                  Plastico
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
                     checked={selectedTags.includes('No tiene (Puntera)')}
                     onChange={() => {
                       if (selectedTags.includes('No tiene (Puntera)')) {
@@ -169,6 +337,48 @@ export default function Collection() {
                     }}
                   />
                   No tiene
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Compuesto (Puntera)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Compuesto (Puntera)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Compuesto (Puntera)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Compuesto (Puntera)']);
+                      }
+                    }}
+                  />
+                  Compuesto
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Armadura (Puntera)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Armadura (Puntera)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Armadura (Puntera)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Armadura (Puntera)']);
+                      }
+                    }}
+                  />
+                  Armadura
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Acero (Puntera)')}
+                    onChange={() => {
+                      if (selectedTags.includes('Acero (Puntera)')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Acero (Puntera)'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Acero (Puntera)']);
+                      }
+                    }}
+                  />
+                  Acero
                 </label>
               </div>
             )}
@@ -202,7 +412,7 @@ export default function Collection() {
                       <span>Material superior</span><svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
-                        className={`mobile-menu-filter-arrow`}
+                        className={`mobile-menu-filter-arrow ${showLines ? 'open' : ''}`}
                       >
                         <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
                       </svg>
@@ -222,6 +432,160 @@ export default function Collection() {
                             }} />
                           PVC
                         </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cuero (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cuero (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cuero (Material superior)']);
+                              }
+                            }}
+                          />
+                          Cuero
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cuero impermeable (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cuero impermeable (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero impermeable (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cuero impermeable (Material superior)']);
+                              }
+                            }}
+                          />
+                          Cuero impermeable
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Microfibra (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Microfibra (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Microfibra (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Microfibra (Material superior)']);
+                              }
+                            }}
+                          />
+                          Microfibra
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Tejido (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Tejido (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Tejido (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Tejido (Material superior)']);
+                              }
+                            }}
+                          />
+                          Tejido
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Poliuterano (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Poliuterano (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Poliuterano (Material superior)']);
+                              }
+                            }}
+                          />
+                          Poliuterano
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Nobuk (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Nobuk (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Nobuk (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Nobuk (Material superior)']);
+                              }
+                            }}
+                          />
+                          Nobuk
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('PU (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('PU (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'PU (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'PU (Material superior)']);
+                              }
+                            }}
+                          />
+                          PU
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cuero grasoso (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cuero grasoso (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
+                              }
+                            }}
+                          />
+                          Cuero grasoso
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cuero grasoso (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cuero grasoso (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero grasoso (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cuero grasoso (Material superior)']);
+                              }
+                            }}
+                          />
+                          Cuero grasoso
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Crazy horse (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Crazy horse (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Crazy horse (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Crazy horse (Material superior)']);
+                              }
+                            }}
+                          />
+                          Crazy horse
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Cuero liso (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Cuero liso (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Cuero liso (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Cuero liso (Material superior)']);
+                              }
+                            }}
+                          />
+                          Cuero liso
+                        </label>
                       </>
                     )}
 
@@ -229,13 +593,27 @@ export default function Collection() {
                       <span>Puntera</span><svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
-                        className={`mobile-menu-filter-arrow`}
+                        className={`mobile-menu-filter-arrow ${showLines2 ? 'open' : ''}`}
                       >
                         <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
                       </svg>
                     </div>
                     {showLines2 && (
                       <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Plastico (Puntera)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Plastico (Puntera)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Plastico (Puntera)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Plastico (Puntera)']);
+                              }
+                            }}
+                          />
+                          Plastico
+                        </label>
                         <label className="filter-option">
                           <input
                             type="checkbox"
@@ -248,6 +626,48 @@ export default function Collection() {
                               }
                             }} />
                           No tiene
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Compuesto (Puntera)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Compuesto (Puntera)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Compuesto (Puntera)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Compuesto (Puntera)']);
+                              }
+                            }}
+                          />
+                          Compuesto
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Armadura (Puntera)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Armadura (Puntera)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Armadura (Puntera)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Armadura (Puntera)']);
+                              }
+                            }}
+                          />
+                          Armadura
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Acero (Puntera)')}
+                            onChange={() => {
+                              if (selectedTags.includes('Acero (Puntera)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Acero (Puntera)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Acero (Puntera)']);
+                              }
+                            }}
+                          />
+                          Acero
                         </label>
                       </>
                     )}
