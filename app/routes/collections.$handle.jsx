@@ -82,13 +82,14 @@ export default function Collection() {
   const [activeTab2, setActiveTab2] = useState(null);
   const [activeTab3, setActiveTab3] = useState(null);
   const [activeTab4, setActiveTab4] = useState(null);
+  const [activeTab5, setActiveTab5] = useState(null);
+  const [activeTab6, setActiveTab6] = useState(null);
   const [showLines, setShowLines] = useState(false);
   const [showLines2, setShowLines2] = useState(false);
   const [showLines3, setShowLines3] = useState(false);
   const [showLines4, setShowLines4] = useState(false);
-
-
-
+  const [showLines5, setShowLines5] = useState(false);
+  const [showLines6, setShowLines6] = useState(false);
 
   const toggleLines = () => {
     setShowLines(!showLines);
@@ -104,6 +105,14 @@ export default function Collection() {
 
   const toggleLines4 = () => {
     setShowLines4(!showLines4);
+  }
+
+  const toggleLines5 = () => {
+    setShowLines5(!showLines5);
+  }
+
+  const toggleLines6 = () => {
+    setShowLines6(!showLines6);
   }
 
   // Filtramos los productos basados en los tags seleccionados
@@ -543,6 +552,153 @@ export default function Collection() {
               </div>
             )}
           </div>
+
+          {/* Pestaña Tipo de suela*/}
+          <div className="filter-tab">
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab5(activeTab5 === 'suela' ? null : 'suela')}
+            >
+              <span>Tipo de suela</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab5 ? 'open' : ''}`} viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+            {activeTab5 && (
+              <div className='filter-tab-content'>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Poiiuterano monodensado')}
+                    onChange={() => {
+                      if (selectedTags.includes('Poiiuterano monodensado')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Poiiuterano monodensado'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Poiiuterano monodensado']);
+                      }
+                    }}
+                  />
+                  Poliuterano monodensado
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('caucho monodensado')}
+                    onChange={() => {
+                      if (selectedTags.includes('caucho monodensado')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'caucho monodensado'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'caucho monodensado']);
+                      }
+                    }}
+                  />
+                  Caucho monodensado
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('poliuterano bidensado')}
+                    onChange={() => {
+                      if (selectedTags.includes('poliuterano bidensado')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'poliuterano bidensado'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'poliuterano bidensado']);
+                      }
+                    }}
+                  />
+                  Poliuterano bidensado
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Poliuterano tridensado')}
+                    onChange={() => {
+                      if (selectedTags.includes('Poliuterano tridensado')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano tridensado'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Poliuterano tridensado']);
+                      }
+                    }}
+                  />
+                  Poliuterano tridensado
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Poliuterano y caucho')}
+                    onChange={() => {
+                      if (selectedTags.includes('Poliuterano y caucho')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano y caucho'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Poliuterano y caucho']);
+                      }
+                    }}
+                  />
+                  Poliuterano y caucho
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('caucho de poliuterano y latex')}
+                    onChange={() => {
+                      if (selectedTags.includes('caucho de poliuterano y latex')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'caucho de poliuterano y latex'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'caucho de poliuterano y latex']);
+                      }
+                    }}
+                  />
+                  Caucho de poliuterano y latex
+                </label>
+              </div>
+            )}
+          </div>
+
+          {/* Pestaña Caracteristica de tipo de suela*/}
+          <div className="filter-tab">
+            <div
+              className="filter-tab-header"
+              onClick={() => setActiveTab6(activeTab6 === 'caracteristica de suela' ? null : 'caracteristica de suela')}
+            >
+              <span>Caracteristica de técnica de suela</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab6 ? 'open' : ''}`} viewBox="0 0 24 24">
+                <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+              </svg>
+            </div>
+            {activeTab6 && (
+              <div className='filter-tab-content'>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('antiestatico')}
+                    onChange={() => {
+                      if (selectedTags.includes('antiestatico')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'antiestatico'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'antiestatico']);
+                      }
+                    }}
+                  />
+                  Antiestático
+                </label>
+                <label className="filter-option">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes('Aislante')}
+                    onChange={() => {
+                      if (selectedTags.includes('Aislante')) {
+                        setSelectedTags(selectedTags.filter(tag => tag !== 'Aislante'));
+                      } else {
+                        setSelectedTags([...selectedTags, 'Aislante']);
+                      }
+                    }}
+                  />
+                  Aislante
+                </label>
+              </div>
+            )}
+          </div>
+
         </div>
 
         {/* Grid de productos */}
@@ -967,6 +1123,146 @@ export default function Collection() {
                             }}
                           />
                           No tiene
+                        </label>
+                      </>
+                    )}
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines5}>
+                      <span>Tipo de suela</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow ${showLines5 ? 'open' : ''}`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines5 && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Poiiuterano monodensado')}
+                            onChange={() => {
+                              if (selectedTags.includes('Poiiuterano monodensado')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Poiiuterano monodensado'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Poiiuterano monodensado']);
+                              }
+                            }}
+                          />
+                          Poliuterano monodensado
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('caucho monodensado')}
+                            onChange={() => {
+                              if (selectedTags.includes('caucho monodensado')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'caucho monodensado'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'caucho monodensado']);
+                              }
+                            }}
+                          />
+                          Caucho monodensado
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('poliuterano bidensado')}
+                            onChange={() => {
+                              if (selectedTags.includes('poliuterano bidensado')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'poliuterano bidensado'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'poliuterano bidensado']);
+                              }
+                            }}
+                          />
+                          Poliuterano bidensado
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Poliuterano tridensado')}
+                            onChange={() => {
+                              if (selectedTags.includes('Poliuterano tridensado')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano tridensado'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Poliuterano tridensado']);
+                              }
+                            }}
+                          />
+                          Poliuterano tridensado
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Poliuterano y caucho')}
+                            onChange={() => {
+                              if (selectedTags.includes('Poliuterano y caucho')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Poliuterano y caucho'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Poliuterano y caucho']);
+                              }
+                            }}
+                          />
+                          Poliuterano y caucho
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('caucho de poliuterano y latex')}
+                            onChange={() => {
+                              if (selectedTags.includes('caucho de poliuterano y latex')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'caucho de poliuterano y latex'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'caucho de poliuterano y latex']);
+                              }
+                            }}
+                          />
+                          Caucho de poliuterano y latex
+                        </label>
+                      </>
+                    )}
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines6}>
+                      <span>Caracteristica de técnica de suela</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow ${showLines6 ? 'open' : ''}`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines6 && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('antiestatico')}
+                            onChange={() => {
+                              if (selectedTags.includes('antiestatico')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'antiestatico'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'antiestatico']);
+                              }
+                            }}
+                          />
+                          Antiestático
+                        </label>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('Aislante')}
+                            onChange={() => {
+                              if (selectedTags.includes('Aislante')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'Aislante'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'Aislante']);
+                              }
+                            }}
+                          />
+                          Aislante
                         </label>
                       </>
                     )}
