@@ -204,18 +204,15 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  /* Se ajusta al contenido */
   border: 1px solid #ccc;
   border-radius: 4px;
-  overflow: hidden;
-  /* Para que no haya desbordamiento */
+  overflow: hidden; 
 }
 
 .search-input {
   width: 500px;
   padding: 10px;
   border: none;
-  /* Quitamos el borde porque lo maneja .search-bar */
   font-size: 1rem;
   outline: none;
   background: none;
@@ -227,7 +224,6 @@
   justify-content: center;
   width: 40px;
   height: 55px;
-  /* Misma altura que el input */
   background: #f8f8f8;
   border: none;
   cursor: pointer;
@@ -250,7 +246,6 @@
 @media (max-width: 768px) {
   .header-top-row {
     justify-content: center;
-    /* Centrar contenido en móvil */
     padding: 8px 10px;
   }
 
@@ -288,7 +283,6 @@
     padding: 5px 10px;
     cursor: pointer;
     color: #333;
-    /* Color del ícono de hamburguesa */
   }
 
   .logo-link {
@@ -298,7 +292,6 @@
 
   .logo {
     height: 30px;
-    /* Ajusta según el tamaño de tu logo */
     width: auto;
   }
 
@@ -311,7 +304,6 @@
     flex-grow: 1;
     padding: 8px 12px;
     border: none;
-    /* Quitamos el borde porque lo maneja .search-bar */
     border-radius: 4px 0 0 4px;
     font-size: 14px;
   }
@@ -330,7 +322,6 @@
 
   .lupa-icon {
     fill: #333;
-    /* Color del ícono de lupa */
   }
 
   /* Mobile Menu Overlay */
@@ -352,7 +343,7 @@
     padding: 20px;
     position: relative;
     animation: slideIn 0.3s ease-out;
-    box-sizing: border-box; /* Incluye padding en el cálculo del ancho */
+    box-sizing: border-box; 
   }
 
   .close-menu-button {
@@ -466,6 +457,5 @@
   .mobile-menu-container {
     padding-bottom: 20px;
     overflow-y: auto;
-    /* Permite scroll si el menú es muy largo */
   }
 }

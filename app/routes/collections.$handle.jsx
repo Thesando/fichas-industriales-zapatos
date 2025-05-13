@@ -77,7 +77,20 @@ export default function Collection() {
   /** @type {LoaderReturnData} */
   const { collection } = useLoaderData();
   const [selectedTags, setSelectedTags] = useState([]);
-  const [activeTab, setActiveTab] = useState(null);
+  const [isMenuFilterOpen, setIsMenuFilterOpen] = useState(false);
+  const [activeTab1, setActiveTab1] = useState(null);
+  const [activeTab2, setActiveTab2] = useState(null);
+  const [showLines, setShowLines] = useState(false);
+  const [showLines2, setShowLines2] = useState(false);
+
+
+  const toggleLines = () => {
+    setShowLines(!showLines);
+  }
+
+  const toggleLines2 = () => {
+    setShowLines2(!showLines2);
+  }
 
   // Filtramos los productos basados en los tags seleccionados
   const filteredProducts = selectedTags.length === 0
@@ -86,22 +99,14 @@ export default function Collection() {
       selectedTags.every(tag => product.tags.includes(tag))
     );
 
+  const toggleMenu = () => {
+    setIsMenuFilterOpen(!isMenuFilterOpen);
+    document.body.style.overflow = isMenuFilterOpen ? '' : 'hidden';
+  };
+
   return (
     <div className="collection-page">
-      <h1>{collection.title}</h1>
-      {/* <p className="collection-description">{collection.description}</p> */}
-      {/*  <PaginatedResourceSection
-        connection={collection.products}
-        resourcesClassName="products-grid"
-      >
-        {({ node: product, index }) => (
-          <ProductItem
-            key={product.id}
-            product={product}
-            loading={index < 8 ? 'eager' : undefined}
-          />
-        )}
-      </PaginatedResourceSection> */}
+      <h1 className="collection-title">{collection.title}</h1>
       <div className="collection-content">
         {/* Sidebar de filtros */}
         <div className="filters-sidebar">
@@ -109,15 +114,15 @@ export default function Collection() {
           <div className="filter-tab">
             <div
               className="filter-tab-header"
-              onClick={() => setActiveTab(activeTab === 'material' ? null : 'material')}
+              onClick={() => setActiveTab1(activeTab1 === 'material' ? null : 'material')}
             >
               <span>Material Superior</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab1 ? 'open' : ''}`} viewBox="0 0 24 24">
                 <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
               </svg>
             </div>
 
-            {activeTab === 'material' && (
+            {activeTab1 === 'material' && (
               <div className="filter-tab-content">
                 <label className="filter-option">
                   <input
@@ -141,15 +146,15 @@ export default function Collection() {
           <div className="filter-tab" style={{ marginTop: '16px' }}>
             <div
               className="filter-tab-header"
-              onClick={() => setActiveTab(activeTab === 'puntera' ? null : 'puntera')}
+              onClick={() => setActiveTab2(activeTab2 === 'puntera' ? null : 'puntera')}
             >
               <span>Puntera</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" className={`filter-tab-header-arrow ${activeTab2 ? 'open' : ''}`} viewBox="0 0 24 24">
                 <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
               </svg>
             </div>
 
-            {activeTab === 'puntera' && (
+            {activeTab2 === 'puntera' && (
               <div className="filter-tab-content">
                 <label className="filter-option">
                   <input
@@ -172,6 +177,88 @@ export default function Collection() {
 
         {/* Grid de productos */}
         <div className="products-grid">
+          {/*Filtros para menu mobile */}
+          <div className="mobile-filter-container">
+            <div className='filters-sidebar-mobile'>
+              <button className='filter-button-mobile' onClick={toggleMenu}>Filtros</button>
+            </div>
+          </div>
+
+          {/*Menu para filtros mobile */}
+
+          {isMenuFilterOpen && (
+            <div className='mobile-filter-menu-overlay'>
+              <div className='mobile-filter-menu-container'>
+                <div>
+                  <button
+                    className="close-menu-filter-button"
+                    onClick={toggleMenu}
+                  >
+                    ×
+                  </button>
+                  <nav className='mobile-filter-nav'>
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines}>
+                      <span>Material superior</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('PVC (Material superior)')}
+                            onChange={() => {
+                              if (selectedTags.includes('PVC (Material superior)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'PVC (Material superior)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'PVC (Material superior)']);
+                              }
+                            }} />
+                          PVC
+                        </label>
+                      </>
+                    )}
+
+                    <div className='mobile-menu-filter-item' onClick={toggleLines2}>
+                      <span>Puntera</span><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className={`mobile-menu-filter-arrow`}
+                      >
+                        <path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"></path>
+                      </svg>
+                    </div>
+                    {showLines2 && (
+                      <>
+                        <label className="filter-option">
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes('No tiene (Puntera)')}
+                            onChange={() => {
+                              if (selectedTags.includes('No tiene (Puntera)')) {
+                                setSelectedTags(selectedTags.filter(tag => tag !== 'No tiene (Puntera)'));
+                              } else {
+                                setSelectedTags([...selectedTags, 'No tiene (Puntera)']);
+                              }
+                            }} />
+                          No tiene
+                        </label>
+                      </>
+                    )}
+
+                  </nav>
+                </div>
+              </div>
+            </div>
+          )}
+
+
           {filteredProducts.map((product) => (
             <ProductItem key={product.id} product={product} />
           ))}

@@ -337,6 +337,10 @@ button.reset:hover:not(:has(> *)) {
 * routes/__index
 * --------------------------------------------------
 */
+.collection{
+  margin: 20px;
+}
+
 .featured-collection {
   display: block;
   margin-bottom: 2rem;

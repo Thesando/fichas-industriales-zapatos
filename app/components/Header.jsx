@@ -394,7 +394,7 @@ export function Header() {
               </div>
               {showLines4 && (
                 <div className="mobile-submenu">
-                  <NavLink to="about-bracol" className="mobile-submenu-item">Sobre bracol</NavLink>
+                  <NavLink to="about-bracol" className="mobile-submenu-item" onClick={toggleMenu}>Sobre bracol</NavLink>
                   <NavLink to="bracol/linea2" className="mobile-submenu-item">Tecnologias</NavLink>
                   <NavLink to="bracol/linea1" className="mobile-submenu-item">Sostenibilidad y ESG</NavLink>
                   <NavLink to="bracol/linea1" className="mobile-submenu-item">Canal de ética</NavLink>
