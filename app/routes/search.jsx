@@ -161,7 +161,7 @@ export const SEARCH_QUERY = `#graphql
   ) @inContext(country: $country, language: $language) {
     articles: search(
       query: $term,
-      types: [ARTICLE],
+      types: [PRODUCT],
       first: $first,
     ) {
       nodes {
