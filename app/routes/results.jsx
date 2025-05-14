@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useLoaderData} from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 
 export async function loader({request, context}) {
   const {storefront} = context;
@@ -9,12 +9,16 @@ export async function loader({request, context}) {
   if (!term) return {term, products: []};
 
   const query = `#graphql
-    query BuscarProductos($term: String!) {
+    query BuscarProductos {
       products(first: 100) {
         nodes {
           id
           title
           handle
+          featuredImage {
+            url
+            altText
+          }
           metafields(identifiers: [
             {namespace: "custom", key: "ca"},
             {namespace: "custom", key: "numero_reducido"}
@@ -22,27 +26,33 @@ export async function loader({request, context}) {
             key
             value
           }
-          featuredImage {
-            url
-            altText
-          }
         }
       }
     }
   `;
 
-  const {products} = await storefront.query(query, {variables: {term}});
+  try {
+    const data = await storefront.query(query);
 
-  const matches = products.nodes.filter((product) => {
-    const titleMatch = product.title.toLowerCase().includes(term);
-    const metafieldMatch = product.metafields.some((m) =>
-      m.value?.toLowerCase().includes(term)
-    );
-    return titleMatch || metafieldMatch;
-  });
+    if (!data || !data.products) {
+      throw new Error('No se pudo obtener productos desde Shopify.');
+    }
 
-  return {term, products: matches};
+    const matches = data.products.nodes.filter((product) => {
+      const titleMatch = product.title?.toLowerCase().includes(term);
+      const metafieldMatch = product.metafields?.some((m) =>
+        m.value?.toLowerCase().includes(term)
+      );
+      return titleMatch || metafieldMatch;
+    });
+
+    return {term, products: matches};
+  } catch (error) {
+    console.error('Error al cargar resultados:', error);
+    throw new Response(`Error interno del servidor: ${error}`, {status: 500});
+  }
 }
+
 
 export default function Results() {
     const { term, products } = useLoaderData();
