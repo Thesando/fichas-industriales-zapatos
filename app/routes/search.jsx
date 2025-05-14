@@ -33,43 +33,38 @@ export async function loader({request, context}) {
  * Renders the /search route
  */
 export default function SearchPage() {
-  /** @type {LoaderReturnData} */
-  const {type, term, result, error} = useLoaderData();
-  if (type === 'predictive') return null;
+  const {term, result, error} = useLoaderData();
 
   return (
     <div className="search">
-      <h1>Search</h1>
+      <h1>Buscar productos</h1>
       <SearchForm>
         {({inputRef}) => (
-          <>
-            <input
-              defaultValue={term}
-              name="q"
-              placeholder="Search…"
-              ref={inputRef}
-              type="search"
-            />
-            &nbsp;
-            <button type="submit">Search</button>
-          </>
+          <input
+            ref={inputRef}
+            name="q"
+            placeholder="Buscar por título, CA o número..."
+            defaultValue={term}
+          />
         )}
       </SearchForm>
-      {error && <p style={{color: 'red'}}>{error}</p>}
-      {!term || !result?.total ? (
-        <SearchResults.Empty />
-      ) : (
-        <SearchResults result={result} term={term}>
-          {({articles, pages, products, term}) => (
-            <div>
-              <SearchResults.Products products={products} term={term} />
-              <SearchResults.Pages pages={pages} term={term} />
-              <SearchResults.Articles articles={articles} term={term} />
+
+      {error && <p className="error">{error}</p>}
+
+      {result?.products?.nodes?.length > 0 ? (
+        <div className="product-grid">
+          {result.products.nodes.map((product) => (
+            <div key={product.id} className="product-card">
+              <h3>{product.title}</h3>
+              <p>Precio: {product.variants.nodes[0].price.amount}</p>
+              <p>CA: {product.metafields.find(m => m.key === 'ca')?.value}</p>
+              <p>Número: {product.metafields.find(m => m.key === 'numero_reducido')?.value}</p>
             </div>
-          )}
-        </SearchResults>
+          ))}
+        </div>
+      ) : (
+        <p>No se encontraron productos.</p>
       )}
-      <Analytics.SearchView data={{searchTerm: term, searchResults: result}} />
     </div>
   );
 }
@@ -150,54 +145,35 @@ const PAGE_INFO_FRAGMENT = `#graphql
 
 // NOTE: https://shopify.dev/docs/api/storefront/latest/queries/search
 export const SEARCH_QUERY = `#graphql
-  query RegularSearch(
+query ProductSearch(
     $country: CountryCode
-    $endCursor: String
-    $first: Int
     $language: LanguageCode
-    $last: Int
     $term: String!
-    $startCursor: String
   ) @inContext(country: $country, language: $language) {
-    articles: search(
-      query: $term,
-      types: [ARTICLE],
-      first: $first,
+    products(
+      first: 10,
+      query: "title:*$term* OR metafields.custom.ca:*$term* OR metafields.custom.numero_reducido:*$term*",
+      sortKey: RELEVANCE
     ) {
       nodes {
-        ...on Article {
-          ...SearchArticle
+        id
+        title
+        handle
+        metafields(identifiers: [
+          {namespace: "custom", key: "ca"},
+          {namespace: "custom", key: "numero_reducido"}
+        ]) {
+          key
+          value
         }
-      }
-    }
-    pages: search(
-      query: $term,
-      types: [PAGE],
-      first: $first,
-    ) {
-      nodes {
-        ...on Page {
-          ...SearchPage
+        variants(first: 1) {
+          nodes {
+            price {
+              amount
+              currencyCode
+            }
+          }
         }
-      }
-    }
-    products: search(
-      after: $endCursor,
-      before: $startCursor,
-      first: $first,
-      last: $last,
-      query: $term,
-      sortKey: RELEVANCE,
-      types: [PRODUCT],
-      unavailableProducts: HIDE,
-    ) {
-      nodes {
-        ...on Product {
-          ...SearchProduct
-        }
-      }
-      pageInfo {
-        ...PageInfoFragment
       }
     }
   }
@@ -218,28 +194,17 @@ export const SEARCH_QUERY = `#graphql
 async function regularSearch({request, context}) {
   const {storefront} = context;
   const url = new URL(request.url);
-  const variables = getPaginationVariables(request, {pageBy: 8});
   const term = String(url.searchParams.get('q') || '');
 
-  // Search articles, pages, and products for the `q` term
-  const {errors, ...items} = await storefront.query(SEARCH_QUERY, {
-    variables: {...variables, term},
+  const {products, errors} = await storefront.query(SEARCH_QUERY, {
+    variables: {term},
   });
 
-  if (!items) {
-    throw new Error('No search data returned from Shopify API');
-  }
-
-  const total = Object.values(items).reduce(
-    (acc, {nodes}) => acc + nodes.length,
-    0,
-  );
-
-  const error = errors
-    ? errors.map(({message}) => message).join(', ')
-    : undefined;
-
-  return {type: 'regular', term, error, result: {total, items}};
+  return {
+    term,
+    error: errors?.map(e => e.message).join(', '),
+    result: {products}
+  };
 }
 
 /**
