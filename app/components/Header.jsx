@@ -243,7 +243,7 @@ export function Header() {
         {/* Barra de búsqueda (decorativa) */}
         <div className="search-bar">
           <form
-            action="/resultados"
+            action="/results"
             method="get"
             className="search-bar"
           >
