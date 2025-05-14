@@ -1,14 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLoaderData } from '@remix-run/react';
 
-export async function loader({request, context}) {
-  const {storefront} = context;
-  const url = new URL(request.url);
-  const term = url.searchParams.get('q')?.toLowerCase() || '';
+export async function loader({ request, context }) {
+    const { storefront } = context;
+    const url = new URL(request.url);
+    const term = url.searchParams.get('q')?.toLowerCase() || '';
 
-  if (!term) return {term, products: []};
+    if (!term) return { term, products: [] };
 
-  const query = `#graphql
+    const query = `#graphql
     query BuscarProductos {
       products(first: 100) {
         nodes {
@@ -31,26 +31,28 @@ export async function loader({request, context}) {
     }
   `;
 
-  try {
-    const data = await storefront.query(query);
+    try {
+        const data = await storefront.query(query);
 
-    if (!data || !data.products) {
-      throw new Error('No se pudo obtener productos desde Shopify.');
+        if (!data || !data.products) {
+            throw new Error('No se pudo obtener productos desde Shopify.');
+        }
+
+        const matches = data.products.nodes.filter((product) => {
+            const titleMatch = product.title?.toLowerCase().includes(term);
+
+            const metafieldMatch = product.metafields?.some(
+                (m) => m?.value && m.value.toLowerCase().includes(term)
+            );
+
+            return titleMatch || metafieldMatch;
+        });
+
+        return { term, products: matches };
+    } catch (error) {
+        console.error('Error al cargar resultados:', error);
+        throw new Response(`Error interno del servidor: ${error}`, { status: 500 });
     }
-
-    const matches = data.products.nodes.filter((product) => {
-      const titleMatch = product.title?.toLowerCase().includes(term);
-      const metafieldMatch = product.metafields?.some((m) =>
-        m.value?.toLowerCase().includes(term)
-      );
-      return titleMatch || metafieldMatch;
-    });
-
-    return {term, products: matches};
-  } catch (error) {
-    console.error('Error al cargar resultados:', error);
-    throw new Response(`Error interno del servidor: ${error}`, {status: 500});
-  }
 }
 
 
