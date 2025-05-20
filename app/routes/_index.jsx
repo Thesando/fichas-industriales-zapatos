@@ -34,7 +34,7 @@ async function loadCriticalData({ context }) {
   const [{ collections }, { collection: novedades }] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     context.storefront.query(NOVEDADES_COLLECTION_QUERY, {
-      variables: { handle: "Novedades" }, // Usa el "handle" correcto
+      variables: { handle: "novedades" }, // Usa el "handle" correcto
     }),
   ]);
 
