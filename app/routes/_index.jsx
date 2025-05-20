@@ -69,6 +69,7 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
 
   const { novedades } = useLoaderData();
+  const isClient = typeof document !== 'undefined';
 
   useEffect(() => {
     // Solo se ejecuta en el cliente
@@ -77,31 +78,32 @@ export default function Homepage() {
 
   return (
     <>
-      
 
-      <section className="container fifth-section-index my-5">
-        <h5 className="text-center text-uppercase fw-bold mb-4 bracol-news">Novedades Bracol</h5>
-        <div className="row row-cols-2 row-cols-md-4 g-3">
-          {novedades?.products?.nodes.map((product) => (
-            <div className="col" key={product.id}>
-              <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
-                <div className="card h-100 border-0 shadow-sm">
-                  <img
-                    src={product.featuredImage?.url}
-                    alt={product.featuredImage?.altText || product.title}
-                    className="card-img-top"
-                    style={{ objectFit: 'cover', height: '200px' }}
-                  />
-                  <div className="card-body text-center">
-                    <h6 className="card-title fw-semibold">{product.title}</h6>
+
+      {isClient && novedades?.products?.nodes?.length > 0 && (
+        <section className="container my-5">
+          <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
+          <div className="row row-cols-2 row-cols-md-4 g-3">
+            {novedades.products.nodes.map((product) => (
+              <div className="col" key={product.id}>
+                <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
+                  <div className="card h-100 border-0 shadow-sm">
+                    <img
+                      src={product.featuredImage?.url}
+                      alt={product.featuredImage?.altText || product.title}
+                      className="card-img-top"
+                      style={{ objectFit: 'cover', height: '200px' }}
+                    />
+                    <div className="card-body text-center">
+                      <h6 className="card-title fw-semibold">{product.title}</h6>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
