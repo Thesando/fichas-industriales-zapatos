@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLoaderData, Link, NavLink } from '@remix-run/react';
 import { Image } from '@shopify/hydrogen';
-import '../styles/index.css';
+//import '../styles/index.css';
 import { useEffect } from 'react';
 
 
