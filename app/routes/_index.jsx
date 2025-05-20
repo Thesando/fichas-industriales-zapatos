@@ -34,7 +34,7 @@ async function loadCriticalData({ context }) {
   const [{ collections }, { collection: novedades }] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     context.storefront.query(NOVEDADES_COLLECTION_QUERY, {
-      variables: { handle: "novedades" }, // Usa el "handle" correcto
+      variables: { handle: "Novedades" }, // Usa el "handle" correcto
     }),
   ]);
 
@@ -68,7 +68,8 @@ function loadDeferredData({ context }) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
 
-  const { novedades } = useLoaderData();
+  const loaderData = useLoaderData();
+  const novedades = loaderData?.novedades?.collection || null;
 
   useEffect(() => {
     // Solo se ejecuta en el cliente
@@ -79,32 +80,33 @@ export default function Homepage() {
     <>
 
 
-      <section className="container my-5">
-        <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
-        <div className="row row-cols-2 row-cols-md-4 g-3">
-          {novedades?.products?.nodes?.length > 0 ? (
-            novedades.products.nodes.map((product) => (
-              <div className="col" key={product.id}>
-                <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
-                  <div className="card h-100 border-0 shadow-sm">
-                    <img
-                      src={product.featuredImage?.url}
-                      alt={product.featuredImage?.altText || product.title}
-                      className="card-img-top"
-                      style={{ objectFit: 'cover', height: '200px' }}
-                    />
-                    <div className="card-body text-center">
-                      <h6 className="card-title fw-semibold">{product.title}</h6>
-                    </div>
-                  </div>
-                </a>
+      {typeof document !== 'undefined' && novedades?.products?.nodes?.length > 0 ? (
+  <section className="container my-5">
+    <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
+    <div className="row row-cols-2 row-cols-md-4 g-3">
+      {novedades.products.nodes.map((product) => (
+        <div className="col" key={product.id}>
+          <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
+            <div className="card h-100 border-0 shadow-sm">
+              <img
+                src={product.featuredImage?.url}
+                alt={product.featuredImage?.altText || product.title}
+                className="card-img-top"
+                style={{ objectFit: 'cover', height: '200px' }}
+              />
+              <div className="card-body text-center">
+                <h6 className="card-title fw-semibold">{product.title}</h6>
               </div>
-            ))
-          ) : (
-            <p className="text-center w-100">No hay productos disponibles por ahora.</p>
-          )}
+            </div>
+          </a>
         </div>
-      </section>
+      ))}
+    </div>
+  </section>
+) : (
+  <></> // o puedes mostrar un loader o simplemente nada
+)}
+
 
     </>
   );
