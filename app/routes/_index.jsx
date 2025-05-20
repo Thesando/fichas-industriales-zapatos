@@ -31,19 +31,22 @@ export async function loader(args) {
  * @param {LoaderFunctionArgs}
  */
 async function loadCriticalData({ context }) {
-  const [{ collections }, { collection: novedades }] = await Promise.all([
+  const [{ collections }, novedadesResponse] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     context.storefront.query(NOVEDADES_COLLECTION_QUERY, {
-      variables: { handle: "Novedades" }, // Usa el "handle" correcto
+      variables: { handle: "Novedades" },
+    }).catch((err) => {
+      console.error("Error obteniendo colección Novedades:", err);
+      return { collection: null };
     }),
   ]);
 
-
   return {
     featuredCollection: collections.nodes[0],
-    novedades
+    novedades: novedadesResponse?.collection ? novedadesResponse : null
   };
 }
+
 
 /**
  * Load data for rendering content below the fold. This data is deferred and will be
