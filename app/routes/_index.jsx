@@ -1,9 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLoaderData, Link, NavLink } from '@remix-run/react';
+import { useLoaderData, Link } from '@remix-run/react';
 import { Image } from '@shopify/hydrogen';
-//import '../styles/index.css';
 import { useEffect } from 'react';
-
 
 /**
  * @type {MetaFunction}
@@ -25,40 +23,29 @@ export async function loader(args) {
   return { ...deferredData, ...criticalData };
 }
 
-/**
- * Load data necessary for rendering content above the fold. This is the critical data
- * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
- * @param {LoaderFunctionArgs}
- */
 async function loadCriticalData({ context }) {
   const [{ collections }, novedadesResponse] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
-    context.storefront.query(NOVEDADES_COLLECTION_QUERY, {
-      variables: { handle: "Novedades" },
-    }).catch((err) => {
-      console.error("Error obteniendo colección Novedades:", err);
-      return { collection: null };
-    }),
+    context.storefront
+      .query(NOVEDADES_COLLECTION_QUERY, {
+        variables: { handle: "Novedades" },
+      })
+      .catch((err) => {
+        console.error("Error obteniendo colección Novedades:", err);
+        return { collection: null };
+      }),
   ]);
 
   return {
     featuredCollection: collections.nodes[0],
-    novedades: novedadesResponse?.collection ? novedadesResponse : null
+    novedades: novedadesResponse?.collection ? novedadesResponse : null,
   };
 }
 
-
-/**
- * Load data for rendering content below the fold. This data is deferred and will be
- * fetched after the initial page load. If it's unavailable, the page should still 200.
- * Make sure to not throw any errors here, as it will cause the page to 500.
- * @param {LoaderFunctionArgs}
- */
 function loadDeferredData({ context }) {
   const recommendedProducts = context.storefront
     .query(RECOMMENDED_PRODUCTS_QUERY)
     .catch((error) => {
-      // Log query errors, but don't throw them so the page can still render
       console.error(error);
       return null;
     });
@@ -69,65 +56,56 @@ function loadDeferredData({ context }) {
 }
 
 export default function Homepage() {
-  /** @type {LoaderReturnData} */
-
   const loaderData = useLoaderData();
   const novedades = loaderData?.novedades?.collection || null;
 
   useEffect(() => {
-    // Solo se ejecuta en el cliente
+    // Solo se ejecuta en cliente
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
   return (
     <>
-
-
+      {/* Quinta sección: Novedades */}
       {typeof document !== 'undefined' && novedades?.products?.nodes?.length > 0 ? (
-  <section className="container my-5">
-    <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
-    <div className="row row-cols-2 row-cols-md-4 g-3">
-      {novedades.products.nodes.map((product) => (
-        <div className="col" key={product.id}>
-          <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
-            <div className="card h-100 border-0 shadow-sm">
-              <img
-                src={product.featuredImage?.url}
-                alt={product.featuredImage?.altText || product.title}
-                className="card-img-top"
-                style={{ objectFit: 'cover', height: '200px' }}
-              />
-              <div className="card-body text-center">
-                <h6 className="card-title fw-semibold">{product.title}</h6>
+        <section className="container my-5">
+          <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
+          <div className="row row-cols-2 row-cols-md-4 g-3">
+            {novedades.products.nodes.map((product) => (
+              <div className="col" key={product.id}>
+                <a
+                  href={`/products/${product.handle}`}
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="card h-100 border-0 shadow-sm">
+                    <img
+                      src={product.featuredImage?.url}
+                      alt={product.featuredImage?.altText || product.title}
+                      className="card-img-top"
+                      style={{ objectFit: 'cover', height: '200px' }}
+                    />
+                    <div className="card-body text-center">
+                      <h6 className="card-title fw-semibold">{product.title}</h6>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </div>
-          </a>
-        </div>
-      ))}
-    </div>
-  </section>
-) : (
-  <></> // o puedes mostrar un loader o simplemente nada
-)}
-
-
+            ))}
+          </div>
+        </section>
+      ) : (
+        <></> // Nada si no hay datos o estamos en SSR
+      )}
     </>
   );
 }
 
-/**
- * @param {{
- *   collection: FeaturedCollectionFragment;
- * }}
- */
+// Componentes y queries adicionales
 function FeaturedCollection({ collection }) {
   if (!collection) return null;
   const image = collection?.image;
   return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
+    <Link className="featured-collection" to={`/collections/${collection.handle}`}>
       {image && (
         <div className="featured-collection-image">
           <Image data={image} sizes="100vw" />
@@ -137,12 +115,6 @@ function FeaturedCollection({ collection }) {
     </Link>
   );
 }
-
-/**
- * @param {{
- *   products: Promise<RecommendedProductsQuery | null>;
- * }}
- */
 
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
@@ -188,7 +160,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
       }
     }
   }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
+  query RecommendedProducts($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
     products(first: 4, sortKey: UPDATED_AT, reverse: true) {
       nodes {
@@ -217,6 +189,7 @@ const NOVEDADES_COLLECTION_QUERY = `#graphql
     }
   }
 `;
+
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */
