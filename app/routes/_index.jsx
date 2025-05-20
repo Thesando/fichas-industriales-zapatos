@@ -2,8 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLoaderData, Link, NavLink } from '@remix-run/react';
 import { Image } from '@shopify/hydrogen';
 // import '../styles/index.css';
-import { useEffect } from 'react';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 
 /**
@@ -16,25 +15,40 @@ export const meta = () => {
 /**
  * @param {LoaderFunctionArgs} args
  */
-export async function loader({context}) {
-  const {storefront} = context;
-  
+export async function loader({ context }) {
+  // 1. Verificación más segura del entorno
+  const isMockEnvironment = !context.storefront ||
+    !context.storefront.storeDomain ||
+    context.storefront.storeDomain.includes('mock.shop');
+
+  if (isMockEnvironment) {
+    return { collectionData: null, isMock: true };
+  }
+
+  // 2. Consulta solo en producción
   try {
-    // Intenta cargar la colección
-    const {collection} = await storefront.query(NOVEDADES_QUERY, {
-      variables: {handle: "novedades"}
-    });
+    const { collection } = await context.storefront.query(`
+      query NovedadesCollection {
+        collection(handle: "novedades") {
+          products(first: 4) {
+            nodes {
+              id
+              title
+              featuredImage {
+                url(transform: {maxWidth: 300})
+              }
+            }
+          }
+        }
+      }
+    `);
 
     return {
-      collection: collection || null, // Devuelve null si no existe
-      hasError: false
+      collectionData: collection || null,
+      isMock: false
     };
   } catch (error) {
-    // Maneja errores de GraphQL o conexión
-    return {
-      collection: null,
-      hasError: true
-    };
+    return { collectionData: null, isMock: false };
   }
 }
 
@@ -77,15 +91,18 @@ function loadDeferredData({ context }) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
 
-  const {collection, hasError} = useLoaderData();
-  
-  // No renderizar si no hay colección o hay error
-  const shouldRenderNovedades = collection?.products?.nodes?.length > 0;
 
+  // 3. Evita hidratación incorrecta
   useEffect(() => {
-    // Solo se ejecuta en el cliente
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
+
   }, []);
+  const { collectionData, isMock } = useLoaderData();
+
+  // 3. Renderizado condicional seguro
+  if (isMock || !collectionData?.products?.nodes) {
+    return null; // No renderizar nada en mock/error
+  }
 
   return (
     <>
@@ -209,37 +226,24 @@ export default function Homepage() {
         </div>
       </section>
 
-      {shouldRenderNovedades && (
-        <section className="novedades-section py-5">
-          <h5 className="text-center mb-4">NOVEDADES</h5>
-          
-          <div className="row">
-            <div className="col-12">
-              <div className="d-flex flex-nowrap overflow-auto pb-3">
-                {collection.products.nodes.map((product) => (
-                  <div 
-                    key={product.id} 
-                    className="product-card mx-2 flex-shrink-0"
-                    style={{width: 'calc(50% - 16px)'}}
-                  >
-                    <Link to={`/products/${product.handle}`} className="text-decoration-none">
-                      {product.featuredImage && (
-                        <img
-                          src={product.featuredImage.url}
-                          alt={product.title}
-                          className="img-fluid rounded"
-                          style={{height: '200px', objectFit: 'cover'}}
-                        />
-                      )}
-                      <h6 className="mt-2 text-dark">{product.title}</h6>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <section className="novedades-section">
+      <h5 className="text-center">NOVEDADES</h5>
+      <div className="products-grid">
+        {collectionData.products.nodes.map((product) => (
+          <div key={product.id}>
+            {product.featuredImage && (
+              <img 
+                src={product.featuredImage.url} 
+                alt={product.title}
+                width={300}
+                height={300}
+              />
+            )}
+            <h6>{product.title}</h6>
           </div>
-        </section>
-      )}
+        ))}
+      </div>
+    </section>
     </>
   );
 }
