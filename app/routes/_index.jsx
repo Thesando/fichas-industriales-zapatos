@@ -69,7 +69,6 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
 
   const { novedades } = useLoaderData();
-  const isClient = typeof document !== 'undefined';
 
   useEffect(() => {
     // Solo se ejecuta en el cliente
@@ -80,11 +79,11 @@ export default function Homepage() {
     <>
 
 
-      {isClient && novedades?.products?.nodes?.length > 0 && (
-        <section className="container my-5">
-          <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
-          <div className="row row-cols-2 row-cols-md-4 g-3">
-            {novedades.products.nodes.map((product) => (
+      <section className="container my-5">
+        <h5 className="text-center text-uppercase fw-bold mb-4">Novedades Bracol</h5>
+        <div className="row row-cols-2 row-cols-md-4 g-3">
+          {novedades?.products?.nodes?.length > 0 ? (
+            novedades.products.nodes.map((product) => (
               <div className="col" key={product.id}>
                 <a href={`/products/${product.handle}`} className="text-decoration-none text-dark">
                   <div className="card h-100 border-0 shadow-sm">
@@ -100,10 +99,13 @@ export default function Homepage() {
                   </div>
                 </a>
               </div>
-            ))}
-          </div>
-        </section>
-      )}
+            ))
+          ) : (
+            <p className="text-center w-100">No hay productos disponibles por ahora.</p>
+          )}
+        </div>
+      </section>
+
     </>
   );
 }
