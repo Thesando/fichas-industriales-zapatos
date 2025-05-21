@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLoaderData, Link, NavLink } from '@remix-run/react';
 import { Image } from '@shopify/hydrogen';
 //import '../styles/index.css';
-import { useEffect } from 'react';
 
 
 /**
@@ -143,10 +142,10 @@ function NovedadesSection({ products }) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
 
-  useEffect(() => {
-    // Solo se ejecuta en el cliente
-    import('bootstrap/dist/js/bootstrap.bundle.min.js');
-  }, []);
+  // useEffect(() => {
+  //   // Solo se ejecuta en el cliente
+  //   import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  // }, []);
 
   const data = useLoaderData();
 
