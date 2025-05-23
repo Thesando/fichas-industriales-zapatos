@@ -28,6 +28,16 @@ Es un desarrollo técnico inspirado en la estructura del sitio brasileño **Brac
 ![image](https://github.com/user-attachments/assets/53bf1433-ed28-4f57-af49-105f8f4a9d87)
 ![image](https://github.com/user-attachments/assets/753b0a57-1574-4f6f-8c03-df18ea3f00d6)
 
+### Lista de fichas de zapatos
+
+![image](https://github.com/user-attachments/assets/2e587471-8419-4f54-84f4-dad187f68504)
+
+### Ficha tecnica de cada producto
+
+![image](https://github.com/user-attachments/assets/e760883a-ade5-4233-bb8f-68284959e78b)
+![image](https://github.com/user-attachments/assets/0ff856f5-940c-42a3-b3a0-209b866226ea)
+![image](https://github.com/user-attachments/assets/8470b22f-5799-4b97-8688-ba703d9fee79)
+
 
 
 
