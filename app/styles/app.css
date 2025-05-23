@@ -209,7 +209,7 @@ button.reset:hover:not(:has(> *)) {
 * --------------------------------------------------
 */
 .footer {
-  background: var(--color-dark);
+  background: #5C5C5C;
   margin-top: auto;
 }
 
@@ -218,10 +218,66 @@ button.reset:hover:not(:has(> *)) {
   display: flex;
   grid-gap: 1rem;
   padding: 1rem;
+  padding-top: 34px;
 }
 
 .footer-menu a {
   color: var(--color-light);
+}
+
+.footer-whatsapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.whatsapp-title {
+  color: #FFFFFF;
+  font-size: 17px;
+  font-family: 'Rajdhani', 'sans-serif';
+}
+
+.whatsapp-span {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: 'Rajdhani', 'sans-serif';
+}
+
+.whatsapp-a {
+  color: #FFFFFF;
+  font-size: 30px;
+  font-family: 'Rajdhani', 'sans-serif';
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.footer-inst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.inst-title {
+  color: #FFFFFF;
+}
+
+.nav-inst {
+  text-decoration: none !important;
+}
+
+.footer-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+
+.catalog-title {
+  color: #FFFFFF;
+  font-size: 17px;
+  font-family: 'Rajdhani', 'sans-serif';
 }
 
 /*
@@ -337,7 +393,7 @@ button.reset:hover:not(:has(> *)) {
 * routes/__index
 * --------------------------------------------------
 */
-.collection{
+.collection {
   margin: 20px;
 }
 
@@ -487,7 +543,7 @@ button.reset:hover:not(:has(> *)) {
   font-weight: 700;
 }
 
-.iconos-image{
+.iconos-image {
   width: 80%;
   height: auto;
 }
@@ -499,7 +555,8 @@ button.reset:hover:not(:has(> *)) {
   margin-top: 1.5rem;
 }
 
-.size-info, .size-link {
+.size-info,
+.size-link {
   margin-bottom: 1rem;
   margin-right: 3rem;
 }
@@ -511,14 +568,14 @@ button.reset:hover:not(:has(> *)) {
   font-weight: 700;
 }
 
-.range-size-shoes{
+.range-size-shoes {
   font-family: 'Rajdhani', sans-serif;
   font-size: 30px;
   color: #646464;
   font-weight: 700;
 }
 
-.guide-size{
+.guide-size {
   font-family: 'Rajdhani', sans-serif;
   font-size: 20px;
   color: #EA0029;
@@ -526,12 +583,13 @@ button.reset:hover:not(:has(> *)) {
   cursor: pointer;
 }
 
-.line-break{
+.line-break {
   border: none;
   height: 1px;
   background-color: #646464;
   width: 95%;
-  margin: 1rem 0; /* Espaciado opcional */
+  margin: 1rem 0;
+  /* Espaciado opcional */
 }
 
 .consultant-container {
@@ -541,7 +599,7 @@ button.reset:hover:not(:has(> *)) {
   margin-top: 1.5rem;
 }
 
-.product-approval-certificate{
+.product-approval-certificate {
   display: inline-flex;
   background-color: #fff;
   border: 1px solid #009736;
@@ -549,7 +607,7 @@ button.reset:hover:not(:has(> *)) {
   font-weight: 600;
 }
 
-.certificate-span{
+.certificate-span {
   font-family: 'Rajdhani', sans-serif;
   background-color: #059636 !important;
   color: #fff;
@@ -558,7 +616,7 @@ button.reset:hover:not(:has(> *)) {
   font-size: 22px;
 }
 
-.certificate-code{
+.certificate-code {
   font-family: 'Rajdhani', sans-serif;
   color: #646464;
   padding: 7px 4px !important;
@@ -567,10 +625,10 @@ button.reset:hover:not(:has(> *)) {
 }
 
 .consultant-button {
-  background-color: #646464; 
-  border: 1px solid #646464;    
-  border-radius: 5px; 
-  color: #fff;       
+  background-color: #646464;
+  border: 1px solid #646464;
+  border-radius: 5px;
+  color: #fff;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 22px;
@@ -579,7 +637,7 @@ button.reset:hover:not(:has(> *)) {
   width: 70%;
 }
 
-.custom-download-technical{
+.custom-download-technical {
   display: flex;
   flex-wrap: nowrap;
   gap: 14px;
@@ -588,13 +646,13 @@ button.reset:hover:not(:has(> *)) {
   margin-top: 24px;
 }
 
-.product-download-list{
+.product-download-list {
   font-family: 'Rajdhani', sans-serif;
   flex: 1;
   width: 30%;
-  background-color: #FFF; 
-  border: 2px solid #646464; 
-  border-radius: 5px; 
+  background-color: #FFF;
+  border: 2px solid #646464;
+  border-radius: 5px;
   color: #646464;
   font-size: 16px;
   font-weight: 700;
@@ -603,23 +661,23 @@ button.reset:hover:not(:has(> *)) {
   cursor: pointer;
 }
 
-.product-download-list:hover{
-  background-color: #646464; 
+.product-download-list:hover {
+  background-color: #646464;
   color: #FFF;
 }
 
-.custom-download-comercial{
+.custom-download-comercial {
   margin-right: 1rem;
   margin-top: 24px;
 }
 
-.product-comercial-list{
+.product-comercial-list {
   font-family: 'Rajdhani', sans-serif;
   width: 100%;
   color: #EA0029;
-  background-color: #FFF; 
-  border: 2px solid #EA0029; 
-  border-radius: 5px; 
+  background-color: #FFF;
+  border: 2px solid #EA0029;
+  border-radius: 5px;
   font-size: 22px;
   font-weight: 700;
   padding: 5px 15px;
@@ -627,39 +685,40 @@ button.reset:hover:not(:has(> *)) {
   cursor: pointer;
 }
 
-.product-comercial-list:hover{
+.product-comercial-list:hover {
   color: #FFF;
   background-color: #EA0029;
 }
 
-.container-description{
+.container-description {
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 20px;
 }
 
-.container-description h3{
+.container-description h3 {
   color: #EA0029;
   font-size: 32px;
 }
 
-.container-description h5{
+.container-description h5 {
   font-size: 16px;
 }
 
-.container-description ul{
+.container-description ul {
   color: #646464;
 }
 
-.container-description strong{
+.container-description strong {
   color: #000;
 }
 
-.description-product{
+.description-product {
   font-size: 16px;
   color: #646464;
 }
-.main-characteristics{
+
+.main-characteristics {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }

@@ -225,19 +225,12 @@ export function Header() {
               <div className='popover-menu'>
                 <div className='popover-column'>
                   <NavLink to="about-bracol" className="popover-item">Sobre bracol</NavLink>
-                  <NavLink to="bracol/linea2" className="popover-item">Tecnologias</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Sostenibilidad y ESG</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Canal de ética</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Código de ética</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Politica ambiental</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Politica de calidad</NavLink>
-                  <NavLink to="bracol/linea1" className="popover-item">Politica anticorrupción</NavLink>
                 </div>
               </div>
             </div>
           </div>
 
-          <NavLink to="/distribuidor" className="menu-item">Conviértase en un distribuidor</NavLink>
+          <NavLink to="/become-a-distributor" className="menu-item">Conviértase en un distribuidor</NavLink>
         </nav>
 
         {/* Barra de búsqueda (decorativa) */}
@@ -410,17 +403,10 @@ export function Header() {
               {showLines4 && (
                 <div className="mobile-submenu">
                   <NavLink to="about-bracol" className="mobile-submenu-item" onClick={toggleMenu}>Sobre bracol</NavLink>
-                  <NavLink to="bracol/linea2" className="mobile-submenu-item">Tecnologias</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Sostenibilidad y ESG</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Canal de ética</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Código de ética</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Politica ambiental</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Politica de calidad</NavLink>
-                  <NavLink to="bracol/linea1" className="mobile-submenu-item">Politica anticorrupción</NavLink>
                 </div>
               )}
 
-              <NavLink to="/distribuidor" className="mobile-menu-item">Conviertase en distribuidor</NavLink>
+              <NavLink to="/become-a-distributor" className="mobile-menu-item">Conviertase en distribuidor</NavLink>
             </nav>
           </div>
         </div>

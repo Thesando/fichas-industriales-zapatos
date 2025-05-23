@@ -1,0 +1,177 @@
+.first-index-section {
+    padding: 0%;
+}
+
+.custom-img {
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    min-height: 300px;
+}
+
+.custom-img:hover {
+    transform: scale(1.05);
+}
+
+.second-index-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    color: #212529;
+    font-weight: 700;
+}
+
+.second-index-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: #212529;
+}
+
+.second-index-button {
+    border: 3px solid #ea0029;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: white;
+    width: 7em;
+    text-decoration: none;
+    color: #212529;
+}
+
+.second-index-button:hover {
+    background-color: #ea0029;
+    text-decoration: none;
+    color: white;
+}
+
+.carrousel-third {
+    background-color: #f0f0f0;
+    padding: 2em 1em;
+    border-radius: 15px;
+}
+
+.third-section-title {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ea0029;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.third-section-title-2 {
+    font-family: 'Rajdhani', sans-serif;
+    color: #212529;
+    width: 100%;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+/* Efecto zoom out al pasar el cursor */
+.image-hover-wrapper {
+    border-radius: 10px;
+}
+
+.image-hover {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.image-hover-wrapper:hover .image-hover {
+    transform: scale(0.95);
+    /* Zoom out */
+}
+
+.fourth-title-index {
+    font-family: 'Rajdhani', sans-serif;
+    color: #ea0029;
+    font-size: 24px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.fourth-title-index-2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.tecnologias-principales {
+    display: flex;
+    gap: 4em;
+}
+
+.tecnologia-producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+    border: 1px solid #e9e9e9;
+    border-radius: 10px;
+    width: 33%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tecnologia-producto:hover {
+  transform: scale(1.05); /* Zoom in */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Borde más oscuro */
+  z-index: 2;
+}
+
+.tech-airtech {
+    background-image: url('https://cdn.shopify.com/s/files/1/0688/5113/8848/files/3043-airtech_800x800.png?v=1747687913'
+        );
+}
+
+.tech-cordura {
+    background-image: url('https://cdn.shopify.com/s/files/1/0688/5113/8848/files/3043-cordura_800x800.png?v=1747687912'
+        );
+}
+
+.tech-plantilla {
+    background-image: url('https://cdn.shopify.com/s/files/1/0688/5113/8848/files/3043-soft-walk_800x800.png?v=1747687912'
+        );
+}
+
+.tech-img {
+    height: 180px;
+    width: 100%;
+    background-size: cover;
+    border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.fourth-section-title-index {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    color: #212529;
+    font-weight: 100;
+}
+
+.fourth-section-text-index {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    color: #212529;
+    font-weight: 100;
+}
+
+.bracol-news{
+    color: #ea0029;
+}
+
+@media (max-width: 768px) {
+    .carrousel-third {
+        background-color: transparent !important;
+    }
+
+    .tecnologias-principales {
+        flex-wrap: wrap;
+    }
+
+    .tecnologia-producto {
+        width: 100%;
+    }
+}

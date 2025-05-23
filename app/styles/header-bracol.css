@@ -50,7 +50,8 @@
 
 /* Menú principal */
 .main-menu .nav-link {
-  all: unset; /* Elimina todos los estilos heredados */
+  all: unset;
+  /* Elimina todos los estilos heredados */
 }
 
 .main-menu {
@@ -65,10 +66,14 @@
   font-weight: 600;
   font-size: 16px;
   align-items: center;
-  gap: 4px; /* Espacio entre texto e icono */
-  padding: 8px 0; /* Espaciado vertical */
-  color: #000; /* Fuerza color negro */
-  text-decoration: none !important; /* Elimina subrayado */
+  gap: 4px;
+  /* Espacio entre texto e icono */
+  padding: 8px 0;
+  /* Espaciado vertical */
+  color: #000;
+  /* Fuerza color negro */
+  text-decoration: none !important;
+  /* Elimina subrayado */
 }
 
 .menu-item svg {
@@ -138,7 +143,8 @@
   color: #333;
   font-size: 14px;
   border-radius: 3px;
-  text-decoration: none !important; /* Elimina subrayado */
+  text-decoration: none !important;
+  /* Elimina subrayado */
 }
 
 .popover-item:hover {
@@ -206,7 +212,7 @@
   width: fit-content;
   border: 1px solid #ccc;
   border-radius: 4px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .search-input {
@@ -343,7 +349,7 @@
     padding: 20px;
     position: relative;
     animation: slideIn 0.3s ease-out;
-    box-sizing: border-box; 
+    box-sizing: border-box;
   }
 
   .close-menu-button {

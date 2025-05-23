@@ -132,11 +132,8 @@
     padding: 10px 25px;
     white-space: nowrap;
     background-color: #EA0029 !important;
-    /* Fondo rojo */
     border-color: #EA0029 !important;
-    /* Borde rojo */
     color: white !important;
-    /* Texto blanco */
 }
 
 /* Elimina el azul en TODOS los estados interactivos */
@@ -147,7 +144,6 @@
     background-color: #EA0029 !important;
     border-color: #EA0029 !important;
     box-shadow: none !important;
-    /* Opcional: Elimina el glow azul al hacer focus */
 }
 
 /* Animación lenta de zoom out */
@@ -164,7 +160,6 @@
 @media (max-width: 768px) {
     .video-container {
         margin-bottom: 20px;
-        /* Espacio entre videos */
     }
 
     .our-business {
@@ -175,13 +170,11 @@
 
     .newsletter-input {
         border-radius: 4px !important;
-        /* Bordes redondeados completos en móvil */
         margin-bottom: 10px;
     }
 
     .newsletter-btn {
         border-radius: 4px !important;
-        /* Bordes redondeados completos en móvil */
         width: 100%;
     }
 }
