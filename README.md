@@ -23,6 +23,12 @@ Es un desarrollo técnico inspirado en la estructura del sitio brasileño **Brac
 ![image](https://github.com/user-attachments/assets/a521c699-b803-4af9-8989-c3a18ea3bb7d)
 ![image](https://github.com/user-attachments/assets/5705792a-7f4a-4247-b71d-82595b7d33e7)
 
+### Header mobile
+
+![image](https://github.com/user-attachments/assets/53bf1433-ed28-4f57-af49-105f8f4a9d87)
+![image](https://github.com/user-attachments/assets/753b0a57-1574-4f6f-8c03-df18ea3f00d6)
+
+
 
 
 
