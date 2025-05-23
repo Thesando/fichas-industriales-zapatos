@@ -1,45 +1,28 @@
-# Hydrogen template: Skeleton
+# Plataforma de Fichas Técnicas para Zapatos Industriales (React + Hydrogen)
 
-Hydrogen is Shopify’s stack for headless commerce. Hydrogen is designed to dovetail with [Remix](https://remix.run/), Shopify’s full stack web framework. This template contains a **minimal setup** of components, queries and tooling to get started with Hydrogen.
+Este proyecto es una plataforma informativa desarrollada con React y Hydrogen (Shopify framework), diseñada para mostrar catálogos de productos industriales —específicamente calzado de seguridad— a través de fichas técnicas detalladas. 
 
-[Check out Hydrogen docs](https://shopify.dev/custom-storefronts/hydrogen)
-[Get familiar with Remix](https://remix.run/docs/en/v1)
+Es un desarrollo técnico inspirado en la estructura del sitio brasileño **Bracol**, con el objetivo de crear una versión adaptada al mercado mexicano.
 
-## What's included
+## 🚀 Tecnologías utilizadas
 
-- Remix
-- Hydrogen
-- Oxygen
+- React
+- Hydrogen (Shopify framework)
 - Vite
-- Shopify CLI
-- ESLint
-- Prettier
-- GraphQL generator
-- TypeScript and JavaScript flavors
-- Minimal setup of components and routes
+- Bootstrap 5
+- Graphql
 
-## Getting started
+## 📸 Capturas del proyecto
 
-**Requirements:**
+### Página de inicio
 
-- Node.js version 18.0.0 or higher
+![Inicio] ![image](https://github.com/user-attachments/assets/829734ac-c1f5-4758-a080-ab6a7ceb54ab)
+![image](https://github.com/user-attachments/assets/86455817-a405-45cc-bcf9-c6f7b5c9b1a1)
+![image](https://github.com/user-attachments/assets/f3b991cf-dc03-4970-81a8-a11f2b9c0581)
+![image](https://github.com/user-attachments/assets/608bb508-d3fe-4723-92ab-368808b2c259)
+![image](https://github.com/user-attachments/assets/a521c699-b803-4af9-8989-c3a18ea3bb7d)
+![image](https://github.com/user-attachments/assets/5705792a-7f4a-4247-b71d-82595b7d33e7)
 
-```bash
-npm create @shopify/hydrogen@latest
-```
 
-## Building for production
 
-```bash
-npm run build
-```
 
-## Local development
-
-```bash
-npm run dev
-```
-
-## Setup for using Customer Account API (`/account` section)
-
-Follow step 1 and 2 of <https://shopify.dev/docs/custom-storefronts/building-with-the-customer-account-api/hydrogen#step-1-set-up-a-public-domain-for-local-development>
