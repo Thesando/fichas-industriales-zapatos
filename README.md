@@ -51,8 +51,27 @@ Es un desarrollo técnico inspirado en la estructura del sitio brasileño **Brac
 
 ![image](https://github.com/user-attachments/assets/561b9034-6ef9-425c-b337-bab7568540bb)
 
+## ⚙️ Funcionalidades implementadas
 
+- Página de inicio personalizada con buscador integrado en el header
+- Filtros por línea o categoría de productos
+- Vista de ficha técnica individual por producto
+- Diseño responsivo
+- Arquitectura modular en componentes reutilizables
+- Inspirado en interfaz de Bracol (Brasil) para versión mexicana
 
+## 💬 Estado del proyecto
+El desarrollo fue suspendido temporalmente por decisión del cliente. Sin embargo, el código y diseño actual reflejan un ejercicio técnico completo y funcional, utilizado como referencia para futuros proyectos en el sector industrial.
 
+## 👤 Autor
+
+Desarrollador por Alonso Sandoval
+
+alonso_sandoval1998@hotmail.com
+https://www.linkedin.com/in/alonso-sandoval/
+
+## ⚠️ Nota legal
+
+Este proyecto fue creado como ejercicio técnico sin fines comerciales. Las imágenes de productos utilizadas son ejemplos de muestra. No representa una tienda activa ni contiene información comercial real.
 
 
