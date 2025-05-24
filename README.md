@@ -68,6 +68,7 @@ El desarrollo fue suspendido temporalmente por decisión del cliente. Sin embarg
 Desarrollador por Alonso Sandoval
 
 alonso_sandoval1998@hotmail.com
+
 https://www.linkedin.com/in/alonso-sandoval/
 
 ## ⚠️ Nota legal
