@@ -38,6 +38,20 @@ Es un desarrollo técnico inspirado en la estructura del sitio brasileño **Brac
 ![image](https://github.com/user-attachments/assets/0ff856f5-940c-42a3-b3a0-209b866226ea)
 ![image](https://github.com/user-attachments/assets/8470b22f-5799-4b97-8688-ba703d9fee79)
 
+## Otros archivos
+
+### Sobre Bracol
+
+![image](https://github.com/user-attachments/assets/af028d6b-898a-45b6-ba00-fcb4bd961143)
+![image](https://github.com/user-attachments/assets/08d22bd3-bdaf-4d19-b9f7-d214c6e86a30)
+![image](https://github.com/user-attachments/assets/7ddd8b32-4df8-4423-8873-773e43941836)
+
+
+### Conviertase en distribuidor
+
+![image](https://github.com/user-attachments/assets/561b9034-6ef9-425c-b337-bab7568540bb)
+
+
 
 
 
